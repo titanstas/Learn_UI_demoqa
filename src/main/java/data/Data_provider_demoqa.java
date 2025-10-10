@@ -31,8 +31,8 @@ public class Data_provider_demoqa {
                         .first_name("Stas")
                         .last_name("Ivanov")
                         .email("Stas@yandex.ru")
-                        .age(77)
-                        .salary(500000)
+                        .age("77")
+                        .salary("500000")
                         .department("Main")
                         .build()}
         };
@@ -48,8 +48,8 @@ public class Data_provider_demoqa {
                         .first_name("Stas")
                         .last_name("Ivanov")
                         .email("Stas@yandex.ru")
-                        .age(77)
-                        .salary(500000)
+                        .age("77")
+                        .salary("500000")
                         .department("Main")
                         .build()
 

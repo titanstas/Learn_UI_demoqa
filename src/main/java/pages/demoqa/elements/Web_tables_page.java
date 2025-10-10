@@ -1,10 +1,13 @@
 package pages.demoqa.elements;
 
+import data.objects.Web_tables_object;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import pages.BasePage;
-import data.objects.Web_tables_object;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Web_tables_page extends BasePage {
     /**
@@ -98,6 +101,35 @@ public class Web_tables_page extends BasePage {
      */
     public static String column_in_web_table= "//div[contains(@class, 'rt-td')][%s]";
 
+    /**
+     * First name в таблице web с изменяющимся xpath
+     */
+    public static String first_name_in_web_table= "//div[contains(@class, 'rt-td')][1]";
+
+    /**
+     * Last Name в таблице web с изменяющимся xpath
+     */
+    public static String last_name_in_web_table= "//div[contains(@class, 'rt-td')][2]";
+
+    /**
+     * Age в таблице web с изменяющимся xpath
+     */
+    public static String age_in_web_table= "//div[contains(@class, 'rt-td')][3]";
+
+    /**
+     * Email в таблице web с изменяющимся xpath
+     */
+    public static String email_in_web_table= "//div[contains(@class, 'rt-td')][4]";
+
+    /**
+     * Salary в таблице web с изменяющимся xpath
+     */
+    public static String salary_name_in_web_table= "//div[contains(@class, 'rt-td')][5]";
+
+    /**
+     * Department в таблице web с изменяющимся xpath
+     */
+    public static String department_in_web_table= "//div[contains(@class, 'rt-td')][6]";
 
 
 //div[contains(@class, 'rt-tr -odd')]//div[contains(@role, 'gridcell')]
@@ -177,11 +209,11 @@ public class Web_tables_page extends BasePage {
     /**
      * Метод ввода возраста в регистрационной форме
      */
-    public Web_tables_page insert_age (Integer age)
+    public Web_tables_page insert_age (String age)
     {
         WebElement age_element = set_element_with_condition("visible",reg_form_age_field);
         age_element.clear();
-        age_element.sendKeys(age.toString());
+        age_element.sendKeys(age);
 
         return  new Web_tables_page(driver);
     }
@@ -189,11 +221,11 @@ public class Web_tables_page extends BasePage {
     /**
      * Метод ввода зарплаты в регистрационной форме
      */
-    public Web_tables_page insert_salary (Integer salary)
+    public Web_tables_page insert_salary (String salary)
     {
         WebElement salary_element = set_element_with_condition("visible",reg_form_salary_field);
         salary_element.clear();
-        salary_element.sendKeys(salary.toString());
+        salary_element.sendKeys(salary);
 
         return  new Web_tables_page(driver);
     }
@@ -301,6 +333,116 @@ public class Web_tables_page extends BasePage {
 
     {
         return set_element_with_condition("visible",string_in_web_table+column_in_web_table, xpathParameter);
+    }
+
+
+    /**
+     * Метод получения списка имен в таблице web
+     */
+    public List<String> get_first_names_in_table()
+
+    {
+        List<WebElement> first_names_elements = set_elements_with_condition("visible",first_name_in_web_table );
+        List<String> first_names_texts = first_names_elements.stream().map(x->x.getText()).toList();
+        first_names_texts.forEach(System.out::println);
+        return first_names_texts;
+    }
+
+    /**
+     * Метод получения списка фамилий в таблице web
+     */
+    public List<String> get_last_names_in_table()
+
+    {
+        List<WebElement> last_names_elements = set_elements_with_condition("visible",last_name_in_web_table );
+        List<String> last_names_texts = last_names_elements.stream().map(x->x.getText()).toList();
+        last_names_texts.forEach(System.out::println);
+        return last_names_texts;
+    }
+
+    /**
+     * Метод получения списка возрастов в таблице web
+     */
+    public List<String> get_ages_in_table()
+
+    {
+        List<WebElement> ages_elements = set_elements_with_condition("visible",age_in_web_table );
+        List<String> ages_texts = ages_elements.stream().map(x->x.getText()).toList();
+        ages_texts.forEach(System.out::println);
+        return ages_texts;
+    }
+
+    /**
+     * Метод получения списка email в таблице web
+     */
+    public List<String> get_emails_in_table()
+
+    {
+        List<WebElement> emails_elements = set_elements_with_condition("visible",email_in_web_table );
+        List<String> emails_texts = emails_elements.stream().map(x->x.getText()).toList();
+        emails_texts.forEach(System.out::println);
+        return emails_texts;
+    }
+
+    /**
+     * Метод получения списка зарплат в таблице web
+     */
+    public List<String> get_salaries_in_table()
+
+    {
+        List<WebElement> salaries_elements = set_elements_with_condition("visible",salary_name_in_web_table );
+        List<String> salaries_texts = salaries_elements.stream().map(x->x.getText()).toList();
+        salaries_texts.forEach(System.out::println);
+        return salaries_texts;
+    }
+
+    /**
+     * Метод получения списка отделов в таблице web
+     */
+    public List<String> get_departments_in_table()
+
+    {
+        List<WebElement> departments_elements = set_elements_with_condition("visible",department_in_web_table );
+        List<String> departments_texts = departments_elements.stream().map(x->x.getText()).toList();
+        departments_texts.forEach(System.out::println);
+        return departments_texts;
+    }
+
+    /**
+     * Метод получения списка отделов в таблице web
+     */
+    public List<Web_tables_object> get_persons_in_table()
+
+    {
+        List<String> first_names =get_first_names_in_table();
+        List<String> last_names = get_last_names_in_table();
+        List<String> ages = get_ages_in_table();
+        List<String> emails= get_emails_in_table();
+        List<String> salaries= get_salaries_in_table();
+        List<String> departments = get_departments_in_table();
+
+
+
+        List<Web_tables_object> Web_tables_objects = new ArrayList<>(first_names.size());
+
+        for (int i = 0; i < first_names.size(); i++) {
+             Web_tables_objects.add(
+                    Web_tables_object.builder()
+                            .first_name(first_names.get(i))
+                            .last_name(last_names.get(i))
+                            .email(emails.get(i))
+                            .age(ages.get(i))
+                            .salary(salaries.get(i))
+                            .department(departments.get(i))
+                            .build()
+            );
+
+        }
+
+        Web_tables_objects.forEach(System.out::println);
+
+
+        return Web_tables_objects;
     }
 
 

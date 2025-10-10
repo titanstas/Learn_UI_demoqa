@@ -3,7 +3,8 @@ package demoqa;
 import data.Data_provider_demoqa;
 import data.objects.Text_box_object;
 import data.objects.Web_tables_object;
-import org.testng.annotations.Parameters;
+import lombok.Builder;
+import lombok.Data;
 import org.testng.annotations.Test;
 import pages.demoqa.Demoqa_main_page;
 import pages.demoqa.elements.Radio_button_page;
@@ -125,4 +126,20 @@ public class Tests_demoqa extends BaseTests{
         page.add_search_get_person_in_web_table(object);
     }
 
+    @Test (dataProvider = "web_tables_provider_object", dataProviderClass = Data_provider_demoqa.class)
+    public void _get_first_names_in_web_table (Web_tables_object object) throws InterruptedException {
+        Web_tables_page page = new Web_tables_page(driver);
+        driver.get(Web_tables_page.demoqa_webtables_host);
+        page.get_first_names_in_table();
+    }
+
+    @Test ()
+    public void get_persons_in_web_table ()  {
+        Web_tables_page page = new Web_tables_page(driver);
+        driver.get(Web_tables_page.demoqa_webtables_host);
+        page.get_persons_in_table();
+    }
+
 }
+
+
