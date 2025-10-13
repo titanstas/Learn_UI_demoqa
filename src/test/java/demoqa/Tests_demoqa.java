@@ -11,6 +11,10 @@ import pages.demoqa.elements.Radio_button_page;
 import pages.demoqa.elements.Text_box_page;
 import pages.demoqa.elements.Check_box_page;
 import pages.demoqa.elements.Web_tables_page;
+import pages.demoqa.elements.Buttons_page;
+
+
+
 
 public class Tests_demoqa extends BaseTests{
 
@@ -138,6 +142,30 @@ public class Tests_demoqa extends BaseTests{
         Web_tables_page page = new Web_tables_page(driver);
         driver.get(Web_tables_page.demoqa_webtables_host);
         page.get_persons_in_table();
+    }
+
+    @Test ()
+    public void press_double_click_me_button ()  {
+        Buttons_page page = new Buttons_page(driver);
+        driver.get(Buttons_page.demoqa_buttons_page_host);
+        page.press_double_click_me_button();
+    }
+
+    @Test ()
+    public void press_right_click_me_button ()  {
+        Buttons_page page = new Buttons_page(driver);
+        driver.get(Buttons_page.demoqa_buttons_page_host);
+        page.press_right_click_me_button();
+    }
+
+    @Test ()
+    public void click_all_button ()  {
+        Buttons_page page = new Buttons_page(driver);
+        driver.get(Buttons_page.demoqa_buttons_page_host);
+        page
+                .press_double_click_me_button()
+                .press_right_click_me_button()
+                .press_click_me_button();
     }
 
 }
