@@ -7,13 +7,7 @@ import lombok.Builder;
 import lombok.Data;
 import org.testng.annotations.Test;
 import pages.demoqa.Demoqa_main_page;
-import pages.demoqa.elements.Radio_button_page;
-import pages.demoqa.elements.Text_box_page;
-import pages.demoqa.elements.Check_box_page;
-import pages.demoqa.elements.Web_tables_page;
-import pages.demoqa.elements.Buttons_page;
-
-
+import pages.demoqa.elements.*;
 
 
 public class Tests_demoqa extends BaseTests{
@@ -162,10 +156,16 @@ public class Tests_demoqa extends BaseTests{
     public void click_all_button ()  {
         Buttons_page page = new Buttons_page(driver);
         driver.get(Buttons_page.demoqa_buttons_page_host);
-        page
-                .press_double_click_me_button()
-                .press_right_click_me_button()
-                .press_click_me_button();
+        page.press_all_buttons();
+
+    }
+
+    @Test ()
+    public void goto_main_page_link_from_links ()  {
+        Links_page page = new Links_page(driver);
+        driver.get(Links_page.demoqa_links_page_host);
+        page.goto_main_page_link();
+
     }
 
 }
