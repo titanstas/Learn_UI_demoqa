@@ -21,7 +21,7 @@ public class BaseTests {
     /**
      * Метод для инициализации драйвера из класса Drivers, максимизации окна и установки неявных ожиданий перед каждым тестом
      */
-    @BeforeClass
+    @BeforeClass (alwaysRun = true)
     public void before(){
 
         driver = Drivers.Setdriver();
@@ -34,7 +34,7 @@ public class BaseTests {
     /**
      * Метод для закрытия браузера после каждого теста
      */
-    @AfterClass
+    @AfterClass(alwaysRun = true)
     public void after(){
         driver.quit();
     }

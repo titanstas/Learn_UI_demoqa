@@ -5,6 +5,7 @@ import data.objects.Text_box_object;
 import data.objects.Web_tables_object;
 import data.provider.Data_provider_text_box;
 import data.provider.Data_provider_web_tables;
+import helpers.Drivers;
 import io.qameta.allure.testng.Tag;
 import org.testng.annotations.Test;
 import pages.demoqa.Demoqa_main_page;
@@ -48,7 +49,7 @@ public class Tests_demoqa extends BaseTests{
         Thread.sleep(1000);
     }
 
-    @Test
+    @Test (groups = {"check_box"})
     public void test_check_box_1 () throws InterruptedException {
         Check_box_page page = new Check_box_page(driver);
         driver.get(Check_box_page.demoqa_checkbox_host);
