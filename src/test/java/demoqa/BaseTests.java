@@ -31,13 +31,13 @@ public class BaseTests {
     }
 
 
-//    /**
-//     * Метод для закрытия браузера после каждого теста
-//     */
-//    @AfterClass
-//    public void after(){
-//        driver.quit();
-//    }
+    /**
+     * Метод для закрытия браузера после каждого теста
+     */
+    @AfterClass
+    public void after(){
+        driver.quit();
+    }
 
 
 

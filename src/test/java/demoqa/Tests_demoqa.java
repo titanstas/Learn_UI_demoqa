@@ -1,10 +1,11 @@
 package demoqa;
 
-import data.Data_provider_demoqa;
+import data.provider.Data_provider_demoqa;
 import data.objects.Text_box_object;
 import data.objects.Web_tables_object;
-import lombok.Builder;
-import lombok.Data;
+import data.provider.Data_provider_text_box;
+import data.provider.Data_provider_web_tables;
+import io.qameta.allure.testng.Tag;
 import org.testng.annotations.Test;
 import pages.demoqa.Demoqa_main_page;
 import pages.demoqa.elements.*;
@@ -21,7 +22,10 @@ public class Tests_demoqa extends BaseTests{
 
     }
 
-    @Test (dataProvider = "text_box_provider", dataProviderClass = Data_provider_demoqa.class)
+
+    @Test (dataProvider = "text_box_provider", dataProviderClass = Data_provider_text_box.class,
+            groups = {"text_box"})
+
     public void test_text_box_1 (String full_name, String email, String current_address, String permanent_address ) throws InterruptedException {
         Text_box_page page = new Text_box_page(driver);
         driver.get(Text_box_page.demoqa_text_box_host);
@@ -33,7 +37,9 @@ public class Tests_demoqa extends BaseTests{
         Thread.sleep(10000);
     }
 
-    @Test (dataProvider = "text_box_provider_object", dataProviderClass = Data_provider_demoqa.class)
+    @Test (dataProvider = "text_box_provider_object", dataProviderClass = Data_provider_text_box.class,
+            groups = {"text_box"})
+    @Tag("text_box")
     public void test_text_box_2 (Text_box_object object) throws InterruptedException {
         Text_box_page page = new Text_box_page(driver);
         driver.get(Text_box_page.demoqa_text_box_host);
@@ -89,42 +95,42 @@ public class Tests_demoqa extends BaseTests{
         page.press_radio_button_yes_2();
     }
 
-    @Test (dataProvider = "web_tables_provider_object", dataProviderClass = Data_provider_demoqa.class)
+    @Test (dataProvider = "web_tables_provider_object", dataProviderClass = Data_provider_web_tables.class)
     public void test_add_person_in_web_table (Web_tables_object object) throws InterruptedException {
         Web_tables_page page = new Web_tables_page(driver);
         driver.get(Web_tables_page.demoqa_webtables_host);
         page.add_person_in_web_table(object);
     }
 
-    @Test (dataProvider = "web_tables_provider_object_edit", dataProviderClass = Data_provider_demoqa.class)
+    @Test (dataProvider = "web_tables_provider_object_edit", dataProviderClass = Data_provider_web_tables.class)
     public void test_edit_person_in_web_table (Web_tables_object object, String person_row_number) throws InterruptedException {
         Web_tables_page page = new Web_tables_page(driver);
         driver.get(Web_tables_page.demoqa_webtables_host);
         page.edit_person_in_web_table(object, person_row_number);
     }
 
-    @Test (dataProvider = "web_tables_provider_object_delete", dataProviderClass = Data_provider_demoqa.class)
+    @Test (dataProvider = "web_tables_provider_object_delete", dataProviderClass = Data_provider_web_tables.class)
     public void test_delete_person_in_web_table ( String person_row_number)  {
         Web_tables_page page = new Web_tables_page(driver);
         driver.get(Web_tables_page.demoqa_webtables_host);
         page.delete_person_in_web_table( person_row_number);
     }
 
-    @Test (dataProvider = "web_tables_provider_object", dataProviderClass = Data_provider_demoqa.class)
+    @Test (dataProvider = "web_tables_provider_object", dataProviderClass = Data_provider_web_tables.class)
     public void test (Web_tables_object object) throws InterruptedException {
         Web_tables_page page = new Web_tables_page(driver);
         driver.get(Web_tables_page.demoqa_webtables_host);
         page.search(object.getFirst_name());
     }
 
-    @Test (dataProvider = "web_tables_provider_object", dataProviderClass = Data_provider_demoqa.class)
+    @Test (dataProvider = "web_tables_provider_object", dataProviderClass = Data_provider_web_tables.class)
     public void test_add_search_get_person_in_web_table (Web_tables_object object) throws InterruptedException {
         Web_tables_page page = new Web_tables_page(driver);
         driver.get(Web_tables_page.demoqa_webtables_host);
         page.add_search_get_person_in_web_table(object);
     }
 
-    @Test (dataProvider = "web_tables_provider_object", dataProviderClass = Data_provider_demoqa.class)
+    @Test (dataProvider = "web_tables_provider_object", dataProviderClass = Data_provider_web_tables.class)
     public void _get_first_names_in_web_table (Web_tables_object object) throws InterruptedException {
         Web_tables_page page = new Web_tables_page(driver);
         driver.get(Web_tables_page.demoqa_webtables_host);
