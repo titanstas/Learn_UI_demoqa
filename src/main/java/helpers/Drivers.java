@@ -30,7 +30,7 @@ public class Drivers {
 
         // Установить системную переменную, которая показывает место хранения хромдрайвера
         System.setProperty("webdriver.chrome.driver", System.getenv("CHROME_DRIVER"));
-
+        //D:\ChromeDriver\chromedriver-win64\chromedriver.exe
 
 
 

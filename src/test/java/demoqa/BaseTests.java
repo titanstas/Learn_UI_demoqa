@@ -7,6 +7,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 
 import java.time.Duration;
+import java.util.logging.Level;
 
 
 public class BaseTests {
@@ -26,8 +27,8 @@ public class BaseTests {
 
         driver = Drivers.Setdriver();
         driver.manage().window().maximize();
-        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(60));
-        driver.manage().timeouts().scriptTimeout(Duration.ofSeconds(60));
+        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(100));
+        driver.manage().timeouts().scriptTimeout(Duration.ofSeconds(100));
     }
 
 

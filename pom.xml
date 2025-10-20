@@ -12,7 +12,7 @@
         <maven.compiler.source>19</maven.compiler.source>
         <maven.compiler.target>19</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <seleniumhq.selenium>4.19.1</seleniumhq.selenium>
+        <seleniumhq.selenium>4.37.0</seleniumhq.selenium>
         <allure.version>2.13.0</allure.version>
     </properties>
 

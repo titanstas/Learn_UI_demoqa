@@ -19,7 +19,6 @@ public class Tests_demoqa extends BaseTests{
         Demoqa_main_page mainPage = new Demoqa_main_page(driver);
         driver.get(Demoqa_main_page.demoqa_host);
         mainPage.goto_elements_page();
-        Thread.sleep(3000);
 
     }
 
@@ -171,7 +170,23 @@ public class Tests_demoqa extends BaseTests{
     public void goto_main_page_link_from_links ()  {
         Links_page page = new Links_page(driver);
         driver.get(Links_page.demoqa_links_page_host);
-        page.goto_main_page_link();
+        page.goto_main_page_link_simple();
+
+    }
+
+    @Test (groups = {"links","sanity"})
+    public void goto_main_page_dynamic_link_from_links ()  {
+        Links_page page = new Links_page(driver);
+        driver.get(Links_page.demoqa_links_page_host);
+        page.goto_main_page_link_dynamic();
+
+    }
+
+    @Test (groups = {"links","sanity"})
+    public void click_link_api_created()  {
+        Links_page page = new Links_page(driver);
+        driver.get(Links_page.demoqa_links_page_host);
+        page.click_link_api_created();
 
     }
 
