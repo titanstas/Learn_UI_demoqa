@@ -3,9 +3,12 @@ package helpers;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.logging.LogType;
+import org.openqa.selenium.logging.LoggingPreferences;
 
 
 import java.util.HashMap;
+import java.util.logging.Level;
 
 
 public class Drivers {
@@ -20,7 +23,14 @@ public class Drivers {
 
 
 
+        //Установить сбор логов всех уровней для браузера и сети
+        LoggingPreferences logPrefs = new LoggingPreferences();
+        logPrefs.enable(LogType.BROWSER, Level.ALL);
+
         ChromeOptions options = new ChromeOptions();
+
+        // Применить опцию сбора логов
+        options.setCapability("goog:loggingPrefs", logPrefs);
 
         // Применить опцию директории для загрузки файла
         options.setExperimentalOption("prefs", chromePrefs);
@@ -33,9 +43,6 @@ public class Drivers {
         //D:\ChromeDriver\chromedriver-win64\chromedriver.exe
 
 
-
-        WebDriver  driver = new ChromeDriver(options);
-
-        return driver;
+        return new ChromeDriver(options);
     }
 }

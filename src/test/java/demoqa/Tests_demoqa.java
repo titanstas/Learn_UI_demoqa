@@ -6,10 +6,16 @@ import data.objects.Web_tables_object;
 import data.provider.Data_provider_text_box;
 import data.provider.Data_provider_web_tables;
 import helpers.Drivers;
+import helpers.HttpStatusChecker;
 import io.qameta.allure.testng.Tag;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.devtools.DevTools;
+import org.openqa.selenium.devtools.v139.log.Log;
 import org.testng.annotations.Test;
 import pages.demoqa.Demoqa_main_page;
 import pages.demoqa.elements.*;
+
+import java.io.IOException;
 
 
 public class Tests_demoqa extends BaseTests{
@@ -183,10 +189,18 @@ public class Tests_demoqa extends BaseTests{
     }
 
     @Test (groups = {"links","sanity"})
-    public void click_link_api_created()  {
+    public void click_link_api_created() throws IOException {
         Links_page page = new Links_page(driver);
         driver.get(Links_page.demoqa_links_page_host);
         page.click_link_api_created();
+
+    }
+
+    @Test (groups = {"links","sanity"})
+    public void click_link_api_no_contents() throws IOException {
+        Links_page page = new Links_page(driver);
+        driver.get(Links_page.demoqa_links_page_host);
+        page.click_link_api_no_content();
 
     }
 
