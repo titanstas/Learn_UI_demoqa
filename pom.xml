@@ -56,6 +56,12 @@
             <version>1.18.40</version>
         </dependency>
 
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>rest-assured</artifactId>
+            <version>5.0.0</version>
+        </dependency>
+
     </dependencies>
 
     <build>

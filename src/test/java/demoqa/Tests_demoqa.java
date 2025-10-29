@@ -204,6 +204,14 @@ public class Tests_demoqa extends BaseTests{
 
     }
 
+    @Test (groups = {"links","sanity"})
+    public void click_link_api_no_contents_with_rest_assured() throws IOException {
+        Links_page page = new Links_page(driver);
+        driver.get(Links_page.demoqa_links_page_host);
+        page.click_link_api_no_content_with_rest_assured();
+
+    }
+
     @Test (groups = {"broken_links","smoke"})
     public void test_check_Image_link_broken() throws IOException {
         Broken_links_page page = new Broken_links_page(driver);

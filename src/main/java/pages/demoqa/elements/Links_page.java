@@ -136,7 +136,7 @@ URL адреса апи запросов
     }
 
     /**
-     * Метод нажатия на ссылку created
+     * Метод нажатия на ссылку no content
      */
     public Links_page click_link_api_no_content () throws IOException {
         WebElement element_link = set_element_with_condition("visible", link_api_no_content );
@@ -145,6 +145,20 @@ URL адреса апи запросов
 
         Assert.assertEquals(contains_string(text.getText(),status_api_no_content),status_api_no_content);
         Assert.assertEquals(HttpStatusChecker.getStatusCode(url_api_no_content),Integer.parseInt(status_api_no_content));
+
+        return  new Links_page(driver);
+    }
+
+    /**
+     * Метод нажатия на ссылку no content
+     */
+    public Links_page click_link_api_no_content_with_rest_assured () throws IOException {
+        WebElement element_link = set_element_with_condition("visible", link_api_no_content );
+        element_link.click();
+        WebElement text = set_element_with_condition("visible", api_click_text );
+
+        Assert.assertEquals(contains_string(text.getText(),status_api_no_content),status_api_no_content);
+        Assert.assertEquals(HttpStatusChecker.getStatusCode_by_rest_assured(url_api_no_content),Integer.parseInt(status_api_no_content));
 
         return  new Links_page(driver);
     }
