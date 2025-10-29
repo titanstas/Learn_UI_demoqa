@@ -212,6 +212,22 @@ public class Tests_demoqa extends BaseTests{
 
     }
 
+    @Test (groups = {"broken_links","sanity"})
+    public void test_check_link_valid() throws IOException {
+        Broken_links_page page = new Broken_links_page(driver);
+        driver.get(Broken_links_page.demoqa_broken_links_page_host);
+        page.check_link_valid();
+
+    }
+
+    @Test (groups = {"broken_links","smoke"})
+    public void test_check_link_broken() throws IOException {
+        Broken_links_page page = new Broken_links_page(driver);
+        driver.get(Broken_links_page.demoqa_broken_links_page_host);
+        page.check_link_broken();
+
+    }
+
 }
 
 

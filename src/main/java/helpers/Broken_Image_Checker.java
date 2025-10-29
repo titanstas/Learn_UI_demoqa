@@ -35,8 +35,7 @@ public class Broken_Image_Checker {
                 }
                 else {
                     System.out.println("Status Code: " + statusCode);
-                    System.out.println(connection);
-                    System.out.println(imageUrl);
+
                 }
             } catch (IOException e) {
                 System.out.println("Error checking image: " + imageUrl + " - " + e.getMessage());
