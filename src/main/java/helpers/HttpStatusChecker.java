@@ -25,8 +25,9 @@ public class HttpStatusChecker {
         int status_code= given()
                 .when()
                 .header("Content-Type", "application/x-www-form-urlencoded")
-                .post(urlString)
+                .get(urlString)
                 .then()
+                .log().all()
                 .extract().statusCode();
 
         System.out.println(urlString);

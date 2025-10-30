@@ -204,6 +204,8 @@ public class Tests_demoqa extends BaseTests{
 
     }
 
+
+    //не работает
     @Test (groups = {"links","sanity"})
     public void click_link_api_no_contents_with_rest_assured() throws IOException {
         Links_page page = new Links_page(driver);
@@ -228,11 +230,27 @@ public class Tests_demoqa extends BaseTests{
 
     }
 
+    @Test (groups = {"broken_links","sanity"})
+    public void test_check_link_valid_by_rest_assured() throws IOException {
+        Broken_links_page page = new Broken_links_page(driver);
+        driver.get(Broken_links_page.demoqa_broken_links_page_host);
+        page.check_link_valid_by_rest_assured();
+
+    }
+
     @Test (groups = {"broken_links","smoke"})
     public void test_check_link_broken() throws IOException {
         Broken_links_page page = new Broken_links_page(driver);
         driver.get(Broken_links_page.demoqa_broken_links_page_host);
         page.check_link_broken();
+
+    }
+
+    @Test (groups = {"broken_links","smoke"})
+    public void test_check_link_broken_by_rest_assured() throws IOException {
+        Broken_links_page page = new Broken_links_page(driver);
+        driver.get(Broken_links_page.demoqa_broken_links_page_host);
+        page.check_link_broken_by_rest_assured();
 
     }
 

@@ -91,11 +91,33 @@ public class Broken_links_page extends BasePage {
     }
 
     /**
+     * Метод проверки валидности ссылки (Валидной)
+     */
+    public Broken_links_page check_link_valid_by_rest_assured() throws IOException {
+        WebElement element_link = set_element_with_condition("visible", valid_link );
+        Broken_link_Checker.check_broken_link_by_rest_assured(element_link.getAttribute("href"));
+
+
+        return  new Broken_links_page(driver);
+    }
+
+    /**
      * Метод проверки валидности ссылки (сломанной) по статус коду
      */
     public Broken_links_page check_link_broken() throws IOException {
         WebElement element_link = set_element_with_condition("visible", broken_link );
         Broken_link_Checker.check_broken_link_by_status_code(element_link);
+
+
+        return  new Broken_links_page(driver);
+    }
+
+    /**
+     * Метод проверки валидности ссылки (сломанной) по статус коду
+     */
+    public Broken_links_page check_link_broken_by_rest_assured() throws IOException {
+        WebElement element_link = set_element_with_condition("visible", broken_link );
+        Broken_link_Checker.check_broken_link_by_rest_assured(element_link.getAttribute("href"));
 
 
         return  new Broken_links_page(driver);

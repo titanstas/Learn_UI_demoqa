@@ -1,10 +1,13 @@
 package helpers;
 
+import io.restassured.response.Response;
 import org.openqa.selenium.WebElement;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
+
+import static io.restassured.RestAssured.given;
 
 public class Broken_link_Checker {
 
@@ -31,5 +34,28 @@ public class Broken_link_Checker {
             }
         }
         return statusCode;
+    }
+
+    public static int check_broken_link_by_rest_assured(String urlString) throws IOException {
+
+        int status_code= given()
+                .when()
+                .get(urlString)
+                .then()
+                .log().all()
+                .extract()
+                .statusCode();
+
+
+        if (status_code >= 400) {
+            System.out.println("Broken link found: " + urlString + " (Status Code: " + status_code + ")");
+        }
+        else {
+            System.out.println("Status Code: " + status_code);
+        }
+
+
+
+        return status_code;
     }
 }
