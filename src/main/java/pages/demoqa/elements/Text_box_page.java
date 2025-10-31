@@ -18,15 +18,14 @@ public class Text_box_page extends BasePage {
         super(driver);
     }
 
-
-    /*
-      Xpath
-     */
-
     /**
      * Адрес страницы
      */
     public static String demoqa_text_box_host = "https://demoqa.com/text-box";
+    /*
+      Xpath
+     */
+
 
     /**
      * Поле ввода полного имени

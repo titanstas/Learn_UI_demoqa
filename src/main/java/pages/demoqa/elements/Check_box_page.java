@@ -16,14 +16,15 @@ public class Check_box_page extends BasePage {
         super(driver);
     }
 
-    /*
-      Xpath
-     */
-
     /**
      * Адрес страницы
      */
     public static String demoqa_checkbox_host = "https://demoqa.com/checkbox";
+
+    /*
+      Xpath
+     */
+
 
     /**
      * Кнопка раскрыть/закрыть папку

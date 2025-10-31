@@ -20,6 +20,10 @@ public class Buttons_page extends BasePage {
      * Адрес страницы
      */
     public static String demoqa_buttons_page_host = "https://demoqa.com/buttons";
+ /*
+      Xpath
+     */
+
 
     /**
      * Кнопка Double Click Me

@@ -13,12 +13,13 @@ public class Elements_main_page extends BasePage {
         super(driver);
     }
 
-    /*
-      Xpath
-     */
+
 
     /**
      * Адрес страницы
      */
     public static String demoqa_elements_host = "https://demoqa.com/elements";
+
+
+
 }

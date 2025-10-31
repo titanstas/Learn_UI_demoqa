@@ -18,15 +18,14 @@ public class Radio_button_page extends BasePage {
         super(driver);
     }
 
-
-    /*
-      Xpath
-     */
-
     /**
      * Адрес страницы
      */
     public static String demoqa_radio_button_host = "https://demoqa.com/radio-button";
+
+    /*
+      Xpath
+     */
 
     /**
      * Радио кнопка Yes

@@ -23,14 +23,17 @@ public class Links_page extends BasePage {
     public Links_page(WebDriver driver) {
         super(driver);
     }
-/*
-      Xpath
-     */
 
     /**
      * Адрес страницы
      */
     public static String demoqa_links_page_host = "https://demoqa.com/links";
+
+/*
+      Xpath
+     */
+
+
 
     /**
      * Ссылка на главную страницу обычная (Home)

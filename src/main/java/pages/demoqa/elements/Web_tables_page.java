@@ -19,15 +19,15 @@ public class Web_tables_page extends BasePage {
         super(driver);
     }
 
-
-     /*
-      Xpath
-     */
-
     /**
      * Адрес страницы
      */
+
+
     public static String demoqa_webtables_host = "https://demoqa.com/webtables";
+     /*
+      Xpath
+     */
 
     /**
      * Кнопка ADD

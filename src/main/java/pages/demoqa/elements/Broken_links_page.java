@@ -23,6 +23,11 @@ public class Broken_links_page extends BasePage {
      */
     public static String demoqa_broken_links_page_host = "https://demoqa.com/broken";
 
+     /*
+      Xpath
+     */
+
+
     /**
      * Ссылка на валидную картинку
      */

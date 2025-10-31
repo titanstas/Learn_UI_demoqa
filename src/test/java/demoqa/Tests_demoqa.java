@@ -1,16 +1,10 @@
 package demoqa;
 
-import data.provider.Data_provider_demoqa;
 import data.objects.Text_box_object;
 import data.objects.Web_tables_object;
 import data.provider.Data_provider_text_box;
 import data.provider.Data_provider_web_tables;
-import helpers.Drivers;
-import helpers.HttpStatusChecker;
 import io.qameta.allure.testng.Tag;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.devtools.DevTools;
-import org.openqa.selenium.devtools.v139.log.Log;
 import org.testng.annotations.Test;
 import pages.demoqa.Demoqa_main_page;
 import pages.demoqa.elements.*;
@@ -251,6 +245,14 @@ public class Tests_demoqa extends BaseTests{
         Broken_links_page page = new Broken_links_page(driver);
         driver.get(Broken_links_page.demoqa_broken_links_page_host);
         page.check_link_broken_by_rest_assured();
+
+    }
+
+    @Test (groups = {"upload_download","smoke"})
+    public void test_check_download_file_and_read() throws IOException {
+        Upload_download_page page = new Upload_download_page(driver);
+        driver.get(Upload_download_page.demoqa_upload_download_host);
+        page.download_and_check_file();
 
     }
 
