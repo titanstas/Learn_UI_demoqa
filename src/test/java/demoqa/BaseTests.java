@@ -32,13 +32,13 @@ public class BaseTests {
     }
 
 
-    /**
-     * Метод для закрытия браузера после каждого теста
-     */
-    @AfterClass(alwaysRun = true)
-    public void after(){
-        driver.quit();
-    }
+//    /**
+//     * Метод для закрытия браузера после каждого теста
+//     */
+//    @AfterClass(alwaysRun = true)
+//    public void after(){
+//        driver.quit();
+//    }
 
 
 

@@ -256,6 +256,14 @@ public class Tests_demoqa extends BaseTests{
 
     }
 
+    @Test (groups = {"upload_download","smoke"})
+    public void test_check_upload_file() throws IOException {
+        Upload_download_page page = new Upload_download_page(driver);
+        driver.get(Upload_download_page.demoqa_upload_download_host);
+        page.upload_and_check_file();
+
+    }
+
 }
 
 

@@ -1,5 +1,6 @@
 package pages.demoqa.elements;
 
+import helpers.String_helper;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
@@ -34,21 +35,36 @@ public class Upload_download_page extends BasePage {
     /**
      *  Кнопка Download
      */
-    public static String file_path = "//a[contains(@id, 'downloadButton')]";
+    public static String download_button = "//a[contains(@id, 'downloadButton')]";
 
 
     /**
-     *  директория для хранения файла
+     *  Директория для хранения файла
      */
     public static String file_directory ="D:\\files\\";
 
     /**
+     *  Название файла
+     */
+    public static String upload_file_name ="luminoslogo.png";
+
+    /**
+     *  Кнопка "Выберите файл" для загрузки файла
+     */
+    public static String upload_button = "//input[contains(@id,'uploadFile')]";
+
+    /**
+     *  Кнопка "Выберите файл" для загрузки файла
+     */
+    public static String upload_text = "//p[contains(@id,'uploadedFilePath')]";
+
+
+    /**
      *  Метод загрузки и чтения данных файла, проверяет каждую секунду загрузился ли файл
      */
-
     public Upload_download_page download_and_check_file() {
         //Нажатие на кнопку для загрузки файла
-        WebElement button = set_element_with_condition("visible",file_path);
+        WebElement button = set_element_with_condition("visible", download_button);
         button.click();
 
         //Название файла
@@ -71,7 +87,7 @@ public class Upload_download_page extends BasePage {
         }
 
 
-        // Цикл для проверки, что файл появился
+        // Цикл для проверки, что файл появился в директории
         while (!Files.exists(download_file_path))
         {
             try {
@@ -90,6 +106,23 @@ public class Upload_download_page extends BasePage {
         Assert.assertTrue(Files.exists(download_file_path));
 
             return new Upload_download_page(driver);
+    }
+
+
+    /**
+     *  Метод загрузки и чтения данных файла, проверяет каждую секунду загрузился ли файл
+     */
+    public Upload_download_page upload_and_check_file() {
+
+
+        WebElement upload_file_button =  set_element_with_condition("visible", upload_button);
+        upload_file_button.sendKeys(file_directory+upload_file_name);
+
+        WebElement upload_file_text =  set_element_with_condition("visible", upload_text);
+
+        Assert.assertEquals(String_helper.contains_string(upload_file_text.getText(),upload_file_name),upload_file_name);
+
+        return new Upload_download_page(driver);
     }
 
 
