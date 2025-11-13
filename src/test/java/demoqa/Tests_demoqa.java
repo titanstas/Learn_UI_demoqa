@@ -264,6 +264,22 @@ public class Tests_demoqa extends BaseTests{
 
     }
 
+    @Test (groups = {"dynamic_properties","smoke"})
+    public void test_check_button_visible() throws IOException {
+        Dynamic_properties_page page = new Dynamic_properties_page(driver);
+        driver.get(Dynamic_properties_page.demoqa_dynamic_properties_host);
+        page.check_button_visible();
+
+    }
+
+    @Test (groups = {"dynamic_properties","smoke"})
+    public void test_check_button_change_color() throws IOException {
+        Dynamic_properties_page page = new Dynamic_properties_page(driver);
+        driver.get(Dynamic_properties_page.demoqa_dynamic_properties_host);
+        page.check_button_change_color();
+
+    }
+
 }
 
 
