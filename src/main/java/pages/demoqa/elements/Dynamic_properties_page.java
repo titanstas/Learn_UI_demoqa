@@ -33,13 +33,13 @@ public class Dynamic_properties_page  extends BasePage {
 
 
     /**
-     * Кнопка видимая через 5 секунд
+     * Кнопка видимая через 5 секунд (visible After 5 Seconds)
      */
     public static String visible_after_5_sec_button = "//button[contains(@id, 'visibleAfter')]";
 
 
     /**
-     * Метод проверки появления кнопки
+     * Метод проверки появления кнопки видимой через 5 секунд (visible After 5 Seconds)
      */
     public Dynamic_properties_page check_button_visible()
     {
@@ -50,7 +50,7 @@ public class Dynamic_properties_page  extends BasePage {
     }
 
     /**
-     * Метод проверки изменения цвета кнопки
+     * Метод проверки изменения цвета кнопки Color change
      */
     public Dynamic_properties_page check_button_change_color()
     {
