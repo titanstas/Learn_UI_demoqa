@@ -86,6 +86,39 @@ public class Practice_form extends BasePage {
      */
     public static String music_hobbies_checkbox = "//input[contains(@id, 'hobbies-checkbox-3')]";
 
+    /**
+     *  Кнопка загрузки файла
+     */
+    public static String picture_upload_button = "//input[contains(@id, 'uploadPicture')]";
+
+    /**
+     *  Поле ввода текущего адреса
+     */
+    public static String current_address_field = "//textarea[contains(@id, 'currentAddress')]";
+
+    /**
+     *  Всплывающий список выбора штата
+     */
+    public static String state_list = "//div[@id= 'state']";
+
+
+    /**
+     *  Выбор варианта штата во всплывающем списке с изменяющимся xpath (сейчас есть NCR, Uttar Pradesh, Haryana, Rajasthan)
+     */
+    public static String state_list_variant = "//div[text() ='%s']";
+
+
+    /**
+     *  Всплывающий список выбора штата
+     */
+    public static String city_list_variant_list = "//div[@id= 'city']";
+
+    /**
+     *  Выбор варианта города во всплывающем списке с изменяющимся xpath (сейчас есть Delhi, Gurgaon, Noida)
+     */
+    public static String city_list_variant = "//div[text() ='%s']";
+
+
 
 
 
