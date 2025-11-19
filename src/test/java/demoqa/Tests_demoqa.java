@@ -8,6 +8,7 @@ import io.qameta.allure.testng.Tag;
 import org.testng.annotations.Test;
 import pages.demoqa.Demoqa_main_page;
 import pages.demoqa.elements.*;
+import pages.demoqa.forms.Practice_form_page;
 
 import java.io.IOException;
 
@@ -277,6 +278,19 @@ public class Tests_demoqa extends BaseTests{
         Dynamic_properties_page page = new Dynamic_properties_page(driver);
         driver.get(Dynamic_properties_page.demoqa_dynamic_properties_host);
         page.check_button_change_color();
+
+    }
+
+    @Test (groups = {"practice_form","smoke"})
+    public void test_create_student_in_practice_form() throws IOException {
+        Practice_form_page page = new Practice_form_page(driver);
+        driver.get(Practice_form_page.demoqa_practice_form_host);
+        page
+                .enter_first_name("Stas")
+                .enter_last_name("Ivanov")
+                .enter_email("123Stas@Stas.ru")
+                .choose_gender("Male")
+                .enter_mobile("1234567890");
 
     }
 

@@ -2,17 +2,15 @@ package pages.demoqa.forms;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.testng.Assert;
 import pages.BasePage;
-import pages.demoqa.elements.Dynamic_properties_page;
 
-public class Practice_form extends BasePage {
+public class Practice_form_page extends BasePage {
     /**
      * Конструктор для присвоения значения переменной драйверу в этом классе, из драйвера класса BaseTests
      *
      * @param driver
      */
-    public Practice_form(WebDriver driver) {
+    public Practice_form_page(WebDriver driver) {
         super(driver);
     }
 
@@ -44,17 +42,17 @@ public class Practice_form extends BasePage {
     /**
      * Кнопка выбора мужского пола
      */
-    public static String gender_male_button = "//input[contains(@value, 'Male')]";
+    public static String gender_male_button = "//label[text() ='Male']";
 
     /**
      * Кнопка выбора женского пола
      */
-    public static String gender_female_button = "//input[contains(@value, 'Female')]";
+    public static String gender_female_button = "//label[text() ='Female']";
 
     /**
      * Кнопка выбора другого пола
      */
-    public static String gender_other_button = "//input[contains(@value, 'Other')]";
+    public static String gender_other_button = "//label[text() ='Other']";
 
     /**
      * Поле ввода мобильного телефона (10 цифр)
@@ -118,6 +116,10 @@ public class Practice_form extends BasePage {
      */
     public static String city_list_variant = "//div[text() ='%s']";
 
+    /**
+     * Кнопка отправки данных
+     */
+    public static String submit_button = "//button[@id= 'submit']";
 
 
 
@@ -126,13 +128,72 @@ public class Practice_form extends BasePage {
     /**
      * Метод ввода имени
      */
-    public Practice_form enter_first_name(String first_name)
+    public Practice_form_page enter_first_name(String first_name)
     {
         WebElement first_name_element = set_element_with_condition("visible", first_name_field);
         first_name_element.clear();
         first_name_element.sendKeys(first_name);
 
-        return  new Practice_form(driver);
+        return  new Practice_form_page(driver);
+    }
+
+    /**
+     * Метод ввода фамилии
+     */
+    public Practice_form_page enter_last_name(String last_name)
+    {
+        WebElement last_name_element = set_element_with_condition("visible", last_name_field);
+        last_name_element.clear();
+        last_name_element.sendKeys(last_name);
+
+        return  new Practice_form_page(driver);
+    }
+
+    /**
+     * Метод ввода email
+     */
+    public Practice_form_page enter_email(String email)
+    {
+        WebElement email_element = set_element_with_condition("visible", email_field);
+        email_element.clear();
+        email_element.sendKeys(email);
+
+        return  new Practice_form_page(driver);
+    }
+
+    /**
+     * Метод выбора гендера, нужно выбрать один из имеющихся (сейчас есть Male, Female, Other)
+     */
+    public Practice_form_page choose_gender(String gender)
+    {
+
+        WebElement gender_element;
+         switch (gender)
+        {
+            case "Male" -> gender_element = set_element_with_condition("visible", gender_male_button);
+
+            case "Female" ->  gender_element = set_element_with_condition("visible", gender_female_button);
+
+            case "Other" ->  gender_element = set_element_with_condition("visible", gender_other_button);
+
+            default -> gender_element = set_element_with_condition("visible", gender_male_button);
+        }
+
+        gender_element.click();
+
+        return  new Practice_form_page(driver);
+    }
+
+    /**
+     * Метод ввода мобильного телефона
+     */
+    public Practice_form_page enter_mobile(String mobile)
+    {
+        WebElement mobile_element = set_element_with_condition("visible", mobile_field);
+        mobile_element.clear();
+        mobile_element.sendKeys(mobile);
+
+        return  new Practice_form_page(driver);
     }
 
 }
