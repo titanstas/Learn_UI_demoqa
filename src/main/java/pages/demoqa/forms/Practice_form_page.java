@@ -65,6 +65,34 @@ public class Practice_form_page extends BasePage {
     public static String date_of_birth_field = "//input[contains(@id, 'dateOfBirthInput')]";
 
     /**
+     * Список месяцев даты рождения
+     */
+    public static String month_date_of_birth_list = "//select[contains(@class, 'react-datepicker__month-select')]";
+
+    /**
+     *  Выбор месяца даты рождения по числу с изменяющимся xpath (месяцы выбирать по числу от 0 до 11)
+     */
+    public static String chose_month_date_of_birth = "//select[contains(@class, 'react-datepicker__month-select')]/option[@value= '%s']";
+
+    /**
+     * Список лет даты рождения
+     */
+    public static String year_date_of_birth_list = "//select[contains(@class, 'react-datepicker__year-select')]";
+
+    /**
+     *  Выбор года даты рождения по числу с изменяющимся xpath (годы выбирать по числу от 1900 до 2100)
+     */
+    public static String chose_year_date_of_birth = "//select[contains(@class, 'react-datepicker__year-select')]/option[@value= '%s']";
+
+    /**
+     *  Выбор дня даты рождения по названию месяца и числу с изменяющимся xpath (дни выбирать по числу)
+     *  Месяцы выбирать по названию: January, February, March, April, May, June, July, August, September, October, November, December
+     */
+    public static String chose_day_date_of_birth = "//div[@class= 'react-datepicker__month']//div[contains(@aria-label ,'%s %s')]";
+
+
+
+    /**
      * Поле ввода предметов
      */
     public static String subjects_field = "//div[contains(@class, 'subjects-auto-complete__input')]";
