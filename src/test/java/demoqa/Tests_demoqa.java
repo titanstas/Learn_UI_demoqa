@@ -290,7 +290,10 @@ public class Tests_demoqa extends BaseTests{
                 .enter_last_name("Ivanov")
                 .enter_email("123Stas@Stas.ru")
                 .choose_gender("Male")
-                .enter_mobile("1234567890");
+                .enter_mobile("1234567890")
+                .enter_date_of_birth("February","2022","2")
+                .enter_subjects("Maths")
+                .check_hobbies("sports, reading");
 
     }
 

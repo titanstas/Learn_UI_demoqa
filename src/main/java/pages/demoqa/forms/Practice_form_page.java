@@ -70,9 +70,10 @@ public class Practice_form_page extends BasePage {
     public static String month_date_of_birth_list = "//select[contains(@class, 'react-datepicker__month-select')]";
 
     /**
-     *  Выбор месяца даты рождения по числу с изменяющимся xpath (месяцы выбирать по числу от 0 до 11)
+     *  Выбор месяца даты рождения по названию месяца и числу с изменяющимся xpath (дни выбирать по числу)
+     *  Месяцы выбирать по названию: January, February, March, April, May, June, July, August, September, October, November, December
      */
-    public static String chose_month_date_of_birth = "//select[contains(@class, 'react-datepicker__month-select')]/option[@value= '%s']";
+    public static String chose_month_date_of_birth = "//select[contains(@class, 'react-datepicker__month-select')]/option[text()= '%s']";
 
     /**
      * Список лет даты рождения
@@ -220,6 +221,107 @@ public class Practice_form_page extends BasePage {
         WebElement mobile_element = set_element_with_condition("visible", mobile_field);
         mobile_element.clear();
         mobile_element.sendKeys(mobile);
+
+        return  new Practice_form_page(driver);
+    }
+
+    /**
+     * Метод ввода месяца даты рождения
+     * Месяцы выбирать по названию: January, February, March, April, May, June, July, August, September, October, November, December
+     */
+    public Practice_form_page enter_month_date_of_birth(String month)
+    {
+
+        WebElement month_list_element = set_element_with_condition("visible", month_date_of_birth_list);
+        month_list_element.click();
+
+        WebElement month_element = set_element_with_condition("visible", chose_month_date_of_birth, month);
+        month_element.click();
+
+        return  new Practice_form_page(driver);
+    }
+
+    /**
+     * Метод ввода года даты рождения
+     * Выбор года даты рождения по числу с изменяющимся xpath (годы выбирать по числу от 1900 до 2100)
+     */
+    public Practice_form_page enter_year_date_of_birth(String year)
+    {
+
+        WebElement month_list_element = set_element_with_condition("visible", year_date_of_birth_list);
+        month_list_element.click();
+
+        WebElement month_element = set_element_with_condition("visible", chose_year_date_of_birth, year);
+        month_element.click();
+
+        return  new Practice_form_page(driver);
+    }
+
+    /**
+     * Метод ввода дня даты рождения
+     * Выбор дня даты рождения по названию месяца и числу с изменяющимся xpath (дни выбирать по числу)
+     * Месяцы выбирать по названию: January, February, March, April, May, June, July, August, September, October, November, December
+     */
+    public Practice_form_page enter_day_date_of_birth(String month, String day)
+    {
+
+        WebElement day_of_birth_element = set_element_with_condition("visible", chose_day_date_of_birth, month, day );
+        day_of_birth_element.click();
+
+        return  new Practice_form_page(driver);
+    }
+
+
+    /**
+     * Метод ввода даты рождения
+     */
+    public Practice_form_page enter_date_of_birth(String month,String year, String day )
+    {
+
+        WebElement date_of_birth_field_element = set_element_with_condition("visible", date_of_birth_field);
+        date_of_birth_field_element.click();
+
+        enter_month_date_of_birth(month);
+        enter_year_date_of_birth(year);
+        enter_day_date_of_birth(month,day);
+
+        return  new Practice_form_page(driver);
+    }
+
+    /**
+     * Метод ввода предметов
+     */
+    public Practice_form_page enter_subjects(String subjects)
+    {
+        WebElement subjects_element = set_element_with_condition("visible", subjects_field);
+        subjects_element.sendKeys(subjects);
+
+        return  new Practice_form_page(driver);
+    }
+
+    /**
+     * Метод выбора хобби
+     * Хобби выбирать по названию, которое должно присутствовать в передаваемой строке(есть варианты: sports, reading, music)
+     */
+    public Practice_form_page check_hobbies(String hobbies)
+    {
+        WebElement sports_hobbies_checkbox_element = set_element_with_condition("visible", sports_hobbies_checkbox);
+        WebElement reading_hobbies_checkbox_element = set_element_with_condition("visible", reading_hobbies_checkbox);
+        WebElement music_hobbies_checkbox_element = set_element_with_condition("visible", music_hobbies_checkbox);
+
+
+        if (hobbies.contains("sports")) {
+            sports_hobbies_checkbox_element.click();
+        }
+
+        if (hobbies.contains("reading")) {
+            reading_hobbies_checkbox_element.click();
+        }
+
+        if (hobbies.contains("music")) {
+            music_hobbies_checkbox_element.click();
+        }
+
 
         return  new Practice_form_page(driver);
     }
