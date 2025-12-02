@@ -2,6 +2,7 @@ package pages.demoqa.forms;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 import pages.BasePage;
 
 public class Practice_form_page extends BasePage {
@@ -96,7 +97,24 @@ public class Practice_form_page extends BasePage {
     /**
      * Поле ввода предметов
      */
-    public static String subjects_field = "//div[contains(@class, 'subjects-auto-complete__input')]";
+    public static String subjects_field = "//input[contains(@id, 'subjectsInput')]";
+
+    /**
+     * Всплывающий список выбора предметов
+     */
+    public static String subjects_list = "//div[contains(@class, 'subjects-auto-complete__menu-list')]";
+
+    /**
+     * Вариант из всплывающего списка выбора предметов с изменяющимся xpath
+     * Нужно добавить конкретный вариант, которые есть во всплывающем списке
+     */
+    public static String subjects_list_variant = "//div[contains(@class, 'subjects-auto-complete__menu-list')]/div[text()='%s']";
+
+    /**
+     * Выбранный предмет из всплывающего списка выбора предметов с изменяющимся xpath
+     * Нужно выбрать конкретный вариант, который добавлен во всплывающем списке
+     */
+    public static String subjects_chosen_variant = "//div[contains(@class, 'subjects-auto-complete__multi-value__label')]";
 
     /**
      *  Чекбокс хобби спорт
@@ -289,14 +307,21 @@ public class Practice_form_page extends BasePage {
     }
 
     /**
-     * Метод ввода предметов
+     * Метод ввода предмета и выбора введенного предмета из всплывающего списка
      */
-    public Practice_form_page enter_subjects(String subjects)
+    public Practice_form_page enter_subjects(String subject)
     {
         WebElement subjects_element = set_element_with_condition("visible", subjects_field);
-        subjects_element.sendKeys(subjects);
+        subjects_element.clear();
+        subjects_element.sendKeys(subject);
 
-        return  new Practice_form_page(driver);
+        WebElement subjects_list_variant_element = set_element_with_condition("visible", subjects_list_variant, subject);
+        subjects_list_variant_element.click();
+
+        WebElement subjects_chosen_variant_element = set_element_with_condition("visible", subjects_chosen_variant);
+        Assert.assertEquals(subjects_chosen_variant_element.getText(),subject);
+
+        return new Practice_form_page(driver);
     }
 
     /**
