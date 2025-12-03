@@ -54,7 +54,7 @@ public class Upload_download_page extends BasePage {
     public static String upload_button = "//input[contains(@id,'uploadFile')]";
 
     /**
-     *  Кнопка "Выберите файл" для загрузки файла
+     * Текст у кнопки "Выберите файл" для загрузки файла
      */
     public static String upload_text = "//p[contains(@id,'uploadedFilePath')]";
 

@@ -293,7 +293,12 @@ public class Tests_demoqa extends BaseTests{
                 .enter_mobile("1234567890")
                 .enter_date_of_birth("February","2022","2")
                 .enter_subjects("Maths")
-                .check_hobbies("sports, reading");
+                .check_hobbies("sports, reading")
+                .upload_and_check_file()
+                .enter_current_address("Moscow, Kremlin")
+                .enter_state("Haryana")
+                .enter_city("Karnal")
+                .click_submit_button();
 
     }
 

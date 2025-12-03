@@ -1,9 +1,11 @@
 package pages.demoqa.forms;
 
+import helpers.String_helper;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import pages.BasePage;
+import pages.demoqa.elements.Upload_download_page;
 
 public class Practice_form_page extends BasePage {
     /**
@@ -119,22 +121,32 @@ public class Practice_form_page extends BasePage {
     /**
      *  Чекбокс хобби спорт
      */
-    public static String sports_hobbies_checkbox = "//input[contains(@id, 'hobbies-checkbox-1')]";
+    public static String sports_hobbies_checkbox = "//input[contains(@id, 'hobbies-checkbox-1')]/following-sibling::label";
 
     /**
      *  Чекбокс хобби чтение
      */
-    public static String reading_hobbies_checkbox = "//input[contains(@id, 'hobbies-checkbox-2')]";
+    public static String reading_hobbies_checkbox = "//input[contains(@id, 'hobbies-checkbox-2')]/following-sibling::label";
 
     /**
      *  Чекбокс хобби музыка
      */
-    public static String music_hobbies_checkbox = "//input[contains(@id, 'hobbies-checkbox-3')]";
+    public static String music_hobbies_checkbox = "//input[contains(@id, 'hobbies-checkbox-3')]/following-sibling::label";
 
     /**
      *  Кнопка загрузки файла
      */
     public static String picture_upload_button = "//input[contains(@id, 'uploadPicture')]";
+
+    /**
+     *  Директория для хранения файла
+     */
+    public static String file_directory ="D:\\files\\";
+
+    /**
+     *  Название файла
+     */
+    public static String upload_file_name ="luminoslogo.png";
 
     /**
      *  Поле ввода текущего адреса
@@ -144,22 +156,25 @@ public class Practice_form_page extends BasePage {
     /**
      *  Всплывающий список выбора штата
      */
-    public static String state_list = "//div[@id= 'state']";
+    public static String state_list = "//div[@id= 'state']/parent::div";
 
 
     /**
-     *  Выбор варианта штата во всплывающем списке с изменяющимся xpath (сейчас есть NCR, Uttar Pradesh, Haryana, Rajasthan)
+     *  Выбор варианта штата во всплывающем списке с изменяющимся xpath
+     *  Сейчас есть NCR, Uttar Pradesh, Haryana, Rajasthan
      */
     public static String state_list_variant = "//div[text() ='%s']";
 
 
     /**
-     *  Всплывающий список выбора штата
+     *  Всплывающий список выбора города
      */
-    public static String city_list_variant_list = "//div[@id= 'city']";
+    public static String city_list = "//div[@id= 'city']/parent::div";
 
     /**
-     *  Выбор варианта города во всплывающем списке с изменяющимся xpath (сейчас есть Delhi, Gurgaon, Noida)
+     *  Выбор варианта города во всплывающем списке с изменяющимся xpath
+     *  Для NCR сейчас есть Delhi, Gurgaon, Noida
+     *  Для Haryana сейчас есть Karnal, Panipat
      */
     public static String city_list_variant = "//div[text() ='%s']";
 
@@ -349,6 +364,80 @@ public class Practice_form_page extends BasePage {
 
 
         return  new Practice_form_page(driver);
+    }
+
+
+    /**
+     *  Метод загрузки файла
+     *
+     */
+    public Practice_form_page upload_and_check_file() {
+
+
+        WebElement upload_file_button =  set_element_with_condition("visible", picture_upload_button);
+        upload_file_button.sendKeys(file_directory+upload_file_name);
+
+        return new Practice_form_page(driver);
+    }
+
+    /**
+     *  Метод ввода текущего адреса
+     *
+     */
+    public Practice_form_page enter_current_address(String current_address) {
+
+
+        WebElement current_address_field_element =  set_element_with_condition("visible", current_address_field);
+        current_address_field_element.sendKeys(current_address);
+
+        return new Practice_form_page(driver);
+    }
+
+    /**
+     *  Метод выбора штата
+     * Выбор варианта штата во всплывающем списке с изменяющимся xpath (сейчас есть NCR, Uttar Pradesh, Haryana, Rajasthan)
+     */
+    public Practice_form_page enter_state(String state) {
+
+
+        WebElement state_list_element =  set_element_with_condition("clickable", state_list);
+        state_list_element.click();
+
+        WebElement state_list_variant_element =  set_element_with_condition("clickable", state_list_variant, state );
+        state_list_variant_element.click();
+
+        return new Practice_form_page(driver);
+    }
+
+    /**
+     *  Метод выбора города
+     *  Выбор варианта города во всплывающем списке с изменяющимся xpath
+     *  Для NCR сейчас есть Delhi, Gurgaon, Noida
+     *  Для Haryana сейчас есть Karnal, Panipat
+     */
+    public Practice_form_page enter_city(String city) {
+
+
+        WebElement city_list_element =  set_element_with_condition("clickable", city_list);
+        city_list_element.click();
+
+        WebElement city_list_variant_element =  set_element_with_condition("clickable", city_list_variant, city );
+        city_list_variant_element.click();
+
+        return new Practice_form_page(driver);
+    }
+
+    /**
+     *  Метод нажатия на кнопку отправить
+     *
+     */
+    public Practice_form_page click_submit_button( ) {
+
+
+        WebElement submit_button_element =  set_element_with_condition("clickable", submit_button);
+        submit_button_element.click();
+
+        return new Practice_form_page(driver);
     }
 
 }
