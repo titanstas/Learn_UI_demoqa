@@ -1,11 +1,10 @@
 package pages.demoqa.forms;
 
-import helpers.String_helper;
+import data.objects.Practice_form_object;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import pages.BasePage;
-import pages.demoqa.elements.Upload_download_page;
 
 public class Practice_form_page extends BasePage {
     /**
@@ -138,15 +137,6 @@ public class Practice_form_page extends BasePage {
      */
     public static String picture_upload_button = "//input[contains(@id, 'uploadPicture')]";
 
-    /**
-     *  Директория для хранения файла
-     */
-    public static String file_directory ="D:\\files\\";
-
-    /**
-     *  Название файла
-     */
-    public static String upload_file_name ="luminoslogo.png";
 
     /**
      *  Поле ввода текущего адреса
@@ -350,15 +340,15 @@ public class Practice_form_page extends BasePage {
         WebElement music_hobbies_checkbox_element = set_element_with_condition("visible", music_hobbies_checkbox);
 
 
-        if (hobbies.contains("sports")) {
+        if (hobbies.toLowerCase().contains("sports")) {
             sports_hobbies_checkbox_element.click();
         }
 
-        if (hobbies.contains("reading")) {
+        if (hobbies.toLowerCase().contains("reading")) {
             reading_hobbies_checkbox_element.click();
         }
 
-        if (hobbies.contains("music")) {
+        if (hobbies.toLowerCase().contains("music")) {
             music_hobbies_checkbox_element.click();
         }
 
@@ -371,13 +361,14 @@ public class Practice_form_page extends BasePage {
      *  Метод загрузки файла
      *
      */
-    public Practice_form_page upload_and_check_file() {
+    public Practice_form_page upload_and_check_file(String file_path) {
 
 
         WebElement upload_file_button =  set_element_with_condition("visible", picture_upload_button);
-        upload_file_button.sendKeys(file_directory+upload_file_name);
+        upload_file_button.sendKeys(file_path);
 
         return new Practice_form_page(driver);
+    //file_path ="D:\\files\\luminoslogo.png";
     }
 
     /**
@@ -439,5 +430,34 @@ public class Practice_form_page extends BasePage {
 
         return new Practice_form_page(driver);
     }
+
+    /**
+     *  Метод заполнения и отправки данных по студенту
+     *
+     */
+    public Practice_form_page register_student(Practice_form_object student ) {
+
+                enter_first_name(student.getFirst_name());
+                enter_last_name(student.getLast_name());
+                enter_email(student.getEmail());
+                choose_gender(student.getGender());
+                enter_mobile(student.getMobile());
+                enter_date_of_birth(student.getDate_of_birth_month(),student.getDate_of_birth_year(),student.getDate_of_birth_day());
+                enter_subjects(student.getSubject());
+                check_hobbies(student.getHobbies());
+                upload_and_check_file(student.getFile_path());
+                enter_current_address(student.getCurrent_address());
+                enter_state(student.getState());
+                enter_city(student.getCity());
+                click_submit_button();
+
+
+        return new Practice_form_page(driver);
+    }
+
+
+
+
+
 
 }

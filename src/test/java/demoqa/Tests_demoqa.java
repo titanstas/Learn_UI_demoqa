@@ -1,7 +1,9 @@
 package demoqa;
 
+import data.objects.Practice_form_object;
 import data.objects.Text_box_object;
 import data.objects.Web_tables_object;
+import data.provider.Data_provider_practice_form;
 import data.provider.Data_provider_text_box;
 import data.provider.Data_provider_web_tables;
 import io.qameta.allure.testng.Tag;
@@ -294,11 +296,19 @@ public class Tests_demoqa extends BaseTests{
                 .enter_date_of_birth("February","2022","2")
                 .enter_subjects("Maths")
                 .check_hobbies("sports, reading")
-                .upload_and_check_file()
+                .upload_and_check_file("D:\\files\\luminoslogo.png")
                 .enter_current_address("Moscow, Kremlin")
                 .enter_state("Haryana")
                 .enter_city("Karnal")
                 .click_submit_button();
+
+    }
+
+    @Test (dataProvider = "practice_form_provider_object", dataProviderClass = Data_provider_practice_form.class,groups = {"practice_form","smoke"})
+    public void test_create_student_in_practice_form_use_object(Practice_form_object student) {
+        Practice_form_page page = new Practice_form_page(driver);
+        driver.get(Practice_form_page.demoqa_practice_form_host);
+        page.register_student(student);
 
     }
 
