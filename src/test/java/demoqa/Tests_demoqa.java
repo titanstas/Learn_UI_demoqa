@@ -9,6 +9,7 @@ import data.provider.Data_provider_web_tables;
 import io.qameta.allure.testng.Tag;
 import org.testng.annotations.Test;
 import pages.demoqa.Demoqa_main_page;
+import pages.demoqa.alerts.frame.windows.Browser_windows_page;
 import pages.demoqa.elements.*;
 import pages.demoqa.forms.Practice_form_page;
 
@@ -309,6 +310,22 @@ public class Tests_demoqa extends BaseTests{
         Practice_form_page page = new Practice_form_page(driver);
         driver.get(Practice_form_page.demoqa_practice_form_host);
         page.register_student(student);
+
+    }
+
+    @Test (groups = {"browser_windows","smoke"})
+    public void test_go_to_new_tab()  {
+        Browser_windows_page page = new Browser_windows_page(driver);
+        driver.get(Browser_windows_page.demoqa_browser_windows_page_host);
+        page.go_to_new_tab();
+
+    }
+
+    @Test (groups = {"browser_windows","smoke"})
+    public void test_go_to_new_window()  {
+        Browser_windows_page page = new Browser_windows_page(driver);
+        driver.get(Browser_windows_page.demoqa_browser_windows_page_host);
+        page.go_to_new_window();
 
     }
 
