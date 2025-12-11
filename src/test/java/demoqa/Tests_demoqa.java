@@ -329,6 +329,14 @@ public class Tests_demoqa extends BaseTests{
 
     }
 
+    @Test (groups = {"browser_windows","smoke"})
+    public void test_go_to_new_window_message()  {
+        Browser_windows_page page = new Browser_windows_page(driver);
+        driver.get(Browser_windows_page.demoqa_browser_windows_page_host);
+        page.go_to_new_window_message();
+
+    }
+
 }
 
 
