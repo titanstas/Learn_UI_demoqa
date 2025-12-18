@@ -9,6 +9,7 @@ import data.provider.Data_provider_web_tables;
 import io.qameta.allure.testng.Tag;
 import org.testng.annotations.Test;
 import pages.demoqa.Demoqa_main_page;
+import pages.demoqa.alerts.frame.windows.Alerts_page;
 import pages.demoqa.alerts.frame.windows.Browser_windows_page;
 import pages.demoqa.elements.*;
 import pages.demoqa.forms.Practice_form_page;
@@ -334,6 +335,30 @@ public class Tests_demoqa extends BaseTests{
         Browser_windows_page page = new Browser_windows_page(driver);
         driver.get(Browser_windows_page.demoqa_browser_windows_page_host);
         page.go_to_new_window_message();
+
+    }
+
+    @Test (groups = {"alerts","smoke"})
+    public void test_open_accept_alert()  {
+        Alerts_page page = new Alerts_page(driver);
+        driver.get(Alerts_page.demoqa_alerts_page_host);
+        page.open_accept_alert();
+
+    }
+
+    @Test (groups = {"alerts","smoke"})
+    public void test_open_accept_time_alert()  {
+        Alerts_page page = new Alerts_page(driver);
+        driver.get(Alerts_page.demoqa_alerts_page_host);
+        page.open_accept_time_alert();
+
+    }
+
+    @Test (groups = {"alerts","smoke"})
+    public void test_open_accept_confirm_box()  {
+        Alerts_page page = new Alerts_page(driver);
+        driver.get(Alerts_page.demoqa_alerts_page_host);
+        page.open_accept_confirm_box();
 
     }
 
