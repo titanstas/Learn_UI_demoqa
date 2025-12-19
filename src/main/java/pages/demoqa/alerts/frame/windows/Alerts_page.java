@@ -3,12 +3,8 @@ package pages.demoqa.alerts.frame.windows;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import pages.BasePage;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class Alerts_page extends BasePage {
     /**
@@ -46,9 +42,19 @@ public class Alerts_page extends BasePage {
     public static String open_confirm_box_button = "//button[contains(@id,'confirmButton')]";
 
     /**
-     * Поля для отображения текста после нажатия поля подтверждения
+     * Поле для отображения текста после нажатия поля подтверждения
      */
-    public static String text_after_click_confirm_box_button = "//span[contains(@id,'confirmResult')]";
+    public static String text_after_click_confirm_box = "//span[contains(@id,'confirmResult')]";
+
+    /**
+     * Кнопка для отображения промпта
+     */
+    public static String open_prompt_button = "//button[contains(@id,'promtButton')]";
+
+    /**
+     * Поле для отображения текста после ввода промпта
+     */
+    public static String text_after_prompt = "//span[contains(@id,'promptResult')]";
 
 
     /**
@@ -102,8 +108,30 @@ public class Alerts_page extends BasePage {
 
         Assert.assertTrue(element_have_condition("alertIsNotPresent", ""));
 
-        WebElement text_after_click_confirm_box_button_element = set_element_with_condition("visible", text_after_click_confirm_box_button);
-        Assert.assertEquals(text_after_click_confirm_box_button_element.getText(),"You selected Ok");
+        WebElement text_after_click_confirm_box_element = set_element_with_condition("visible", text_after_click_confirm_box);
+        Assert.assertEquals(text_after_click_confirm_box_element.getText(),"You selected Ok");
+
+        return  new Alerts_page(driver);
+    }
+
+    /**
+     * Метод отображения и подтверждения поля подтверждения
+     */
+    public Alerts_page open_insert_in_prompt(String prompt_text) {
+        WebElement open_prompt_button_element = set_element_with_condition("clickable", open_prompt_button);
+        open_prompt_button_element.click();
+
+
+        Assert.assertTrue(element_have_condition("alertIsPresent", ""));
+
+        Alert alert = driver.switchTo().alert();
+        alert.sendKeys(prompt_text);
+        alert.accept();
+
+        Assert.assertTrue(element_have_condition("alertIsNotPresent", ""));
+
+        WebElement text_after_prompt_element = set_element_with_condition("visible", text_after_prompt);
+        Assert.assertEquals(text_after_prompt_element.getText(),"You entered "+prompt_text);
 
         return  new Alerts_page(driver);
     }

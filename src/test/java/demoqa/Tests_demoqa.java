@@ -11,6 +11,7 @@ import org.testng.annotations.Test;
 import pages.demoqa.Demoqa_main_page;
 import pages.demoqa.alerts.frame.windows.Alerts_page;
 import pages.demoqa.alerts.frame.windows.Browser_windows_page;
+import pages.demoqa.alerts.frame.windows.Frames_page;
 import pages.demoqa.elements.*;
 import pages.demoqa.forms.Practice_form_page;
 
@@ -359,6 +360,30 @@ public class Tests_demoqa extends BaseTests{
         Alerts_page page = new Alerts_page(driver);
         driver.get(Alerts_page.demoqa_alerts_page_host);
         page.open_accept_confirm_box();
+
+    }
+
+    @Test (groups = {"alerts","smoke"})
+    public void test_open_insert_in_prompt()  {
+        Alerts_page page = new Alerts_page(driver);
+        driver.get(Alerts_page.demoqa_alerts_page_host);
+        page.open_insert_in_prompt("Stas");
+
+    }
+
+    @Test (groups = {"frames","smoke"})
+    public void test_show_frame_1_text()  {
+        Frames_page page = new Frames_page(driver);
+        driver.get(Frames_page.demoqa_frames_page_host);
+        page.show_frame_1_text();
+
+    }
+
+    @Test (groups = {"frames","smoke"})
+    public void test_show_frame_2_text()  {
+        Frames_page page = new Frames_page(driver);
+        driver.get(Frames_page.demoqa_frames_page_host);
+        page.show_frame_2_text();
 
     }
 
