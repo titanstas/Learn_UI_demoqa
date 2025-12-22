@@ -53,7 +53,7 @@ public class Frames_page extends BasePage {
 
         WebElement frame_1_text_element = set_element_with_condition("visible", frame_1_text );
         System.out.println(frame_1_text_element.getText());
-
+        Assert.assertEquals(frame_1_text_element.getText(),"This is a sample page");
 
 
         return  new Frames_page(driver);
@@ -68,6 +68,7 @@ public class Frames_page extends BasePage {
 
         WebElement frame_2_text_element = set_element_with_condition("visible", frame_2_text );
         System.out.println(frame_2_text_element.getText());
+        Assert.assertEquals(frame_2_text_element.getText(), "This is a sample page");
 
 
 

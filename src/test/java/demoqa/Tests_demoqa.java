@@ -12,6 +12,7 @@ import pages.demoqa.Demoqa_main_page;
 import pages.demoqa.alerts.frame.windows.Alerts_page;
 import pages.demoqa.alerts.frame.windows.Browser_windows_page;
 import pages.demoqa.alerts.frame.windows.Frames_page;
+import pages.demoqa.alerts.frame.windows.Nested_frames_page;
 import pages.demoqa.elements.*;
 import pages.demoqa.forms.Practice_form_page;
 
@@ -384,6 +385,22 @@ public class Tests_demoqa extends BaseTests{
         Frames_page page = new Frames_page(driver);
         driver.get(Frames_page.demoqa_frames_page_host);
         page.show_frame_2_text();
+
+    }
+
+    @Test (groups = {"Nested_frames","smoke"})
+    public void test_show_parent_frame_text()  {
+        Nested_frames_page page = new Nested_frames_page(driver);
+        driver.get(Nested_frames_page.demoqa_nested_frames_page_host);
+        page.show_parent_frame_text();
+
+    }
+
+    @Test (groups = {"Nested_frames","smoke"})
+    public void test_show_child_frame_text()  {
+        Nested_frames_page page = new Nested_frames_page(driver);
+        driver.get(Nested_frames_page.demoqa_nested_frames_page_host);
+        page.show_child_frame_text();
 
     }
 
