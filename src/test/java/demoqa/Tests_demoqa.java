@@ -9,10 +9,7 @@ import data.provider.Data_provider_web_tables;
 import io.qameta.allure.testng.Tag;
 import org.testng.annotations.Test;
 import pages.demoqa.Demoqa_main_page;
-import pages.demoqa.alerts.frame.windows.Alerts_page;
-import pages.demoqa.alerts.frame.windows.Browser_windows_page;
-import pages.demoqa.alerts.frame.windows.Frames_page;
-import pages.demoqa.alerts.frame.windows.Nested_frames_page;
+import pages.demoqa.alerts.frame.windows.*;
 import pages.demoqa.elements.*;
 import pages.demoqa.forms.Practice_form_page;
 
@@ -401,6 +398,22 @@ public class Tests_demoqa extends BaseTests{
         Nested_frames_page page = new Nested_frames_page(driver);
         driver.get(Nested_frames_page.demoqa_nested_frames_page_host);
         page.show_child_frame_text();
+
+    }
+
+    @Test (groups = {"modal_dialogs","smoke"})
+    public void test_open_close_small_modal()  {
+        Modal_dialogs_page page = new Modal_dialogs_page(driver);
+        driver.get(Modal_dialogs_page.demoqa_modal_dialogs_page_host);
+        page.open_close_small_modal();
+
+    }
+
+    @Test (groups = {"modal_dialogs","smoke"})
+    public void test_open_close_large_modal()  {
+        Modal_dialogs_page page = new Modal_dialogs_page(driver);
+        driver.get(Modal_dialogs_page.demoqa_modal_dialogs_page_host);
+        page.open_close_large_modal();
 
     }
 
