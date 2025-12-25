@@ -12,6 +12,7 @@ import pages.demoqa.Demoqa_main_page;
 import pages.demoqa.alerts.frame.windows.*;
 import pages.demoqa.elements.*;
 import pages.demoqa.forms.Practice_form_page;
+import pages.demoqa.widgets.Accordian_page;
 
 import java.io.IOException;
 
@@ -414,6 +415,16 @@ public class Tests_demoqa extends BaseTests{
         Modal_dialogs_page page = new Modal_dialogs_page(driver);
         driver.get(Modal_dialogs_page.demoqa_modal_dialogs_page_host);
         page.open_close_large_modal();
+
+    }
+
+    @Test (groups = {"accordian","smoke"})
+    public void test_accordians_expand_get_texts()  {
+        Accordian_page page = new Accordian_page(driver);
+        driver.get(Accordian_page.demoqa_accordian_page_host);
+        page.accordian_1_expand_get_text().
+                accordian_2_expand_get_text()
+                .accordian_3_expand_get_text();
 
     }
 
