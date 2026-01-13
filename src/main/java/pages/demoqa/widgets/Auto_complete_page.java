@@ -5,6 +5,8 @@ import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import pages.BasePage;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Auto_complete_page extends BasePage {
@@ -29,38 +31,77 @@ public class Auto_complete_page extends BasePage {
     /**
      * Поле для ввода различных цветов
      */
-    public static String multiple_color_names_field = "//div[contains(@id, 'autoCompleteMultiple')]//div[contains(@class, 'auto-complete__input')]";
+    public static String multiple_color_names_field = "//div[contains(@id, 'autoCompleteMultiple')]//input";
 
+    //div[contains(@id, 'autoCompleteMultiple')]//input
+    //div[contains(@id, 'autoCompleteMultiple')]//div[contains(@class, 'auto-complete__value-container')]
     /**
      * Вариант цвета из всплывающего списка различных цветов (нумеруется с 0)
      */
-    public static String color_from_list_in_multiple_color_names = "//div[contains(@id, 'react-select-2-option-%s')]";
+    public static String color_from_list_in_multiple_color_names = "//div[contains(@id, 'react-select-2-option-0')]";
 
     /**
      * Выбранные цвета в поле для ввода различных цветов
      */
-    public static String chosen_color_in_multiple_color_names_field = "//div[contains(@class, 'css-12jo7m5 auto-complete__multi-value__label')]";
+    public static String chosen_colors_in_multiple_color_names_field = "//div[contains(@class, 'css-12jo7m5 auto-complete__multi-value__label')]";
 
 
 
     /**
-     * Выбрать цвет в поле для ввода различных цветов
-     * Нужно указать цвет и его номер в выпадающем списке(если печатать цвет полностью, то, это 0)
+     * Выбрать цвет в выпадающем списке для различных цветов
+     * Нужно указать цвет и его порядковый номер в выпадающем списке
      * Нумерация начинается с 0
      */
-    public Auto_complete_page type_color_in_multiple_color_names(String color, String number_on_list) {
+    public Auto_complete_page chose_color_in_multiple_color_names_list(String color) {
 
 
         WebElement multiple_color_names_field_element = set_element_with_condition("visible", multiple_color_names_field);
         multiple_color_names_field_element.sendKeys(color);
 
-        WebElement color_element = set_element_with_condition("visible", color_from_list_in_multiple_color_names, number_on_list);
-        multiple_color_names_field_element.click();
+        WebElement color_element = set_element_with_condition("visible", color_from_list_in_multiple_color_names);
+        color_element.click();
 
-        List<WebElement> chosen_colors = set_elements_with_condition("visible",chosen_color_in_multiple_color_names_field);
-        List<WebElement> input_colors_from_chosen_colors = chosen_colors.stream().filter(x->x.getText().toLowerCase().contains(color)).toList();
+       // WebElement chosen_color_element = set_element_with_condition("visible",chosen_colors_in_multiple_color_names_field);
+        List <WebElement> chosen_colors_elements = set_elements_with_condition("visible",chosen_colors_in_multiple_color_names_field);
+        List <String> chosen_colors_elements_sorted =chosen_colors_elements
+                .stream()
+                .filter(x -> x.getText().toLowerCase().equals(color))
+                .map(x -> x.getText().toLowerCase())
+                .toList();
 
-        Assert.assertTrue(input_colors_from_chosen_colors.contains(color));
+        String Chosen_color = chosen_colors_elements_sorted.get(0);
+
+        Assert.assertEquals(Chosen_color, color);
+
+        return  new Auto_complete_page(driver);
+    }
+
+    /**
+     * Выбрать несколько цветов в выпадающем списке для различных цветов
+     * Нужно указать цвета
+     * Нумерация начинается с 0
+     */
+    public Auto_complete_page chose_colors_in_multiple_color_names_list(List<String> colors ) {
+
+        for (String color : colors) {
+            chose_color_in_multiple_color_names_list(color);
+        }
+
+
+        List <WebElement> chosen_colors_elements = set_elements_with_condition("visible",chosen_colors_in_multiple_color_names_field);
+
+        List <String> chosen_colors = new ArrayList<>();
+
+        for (WebElement element : chosen_colors_elements) {
+            chosen_colors.add(element.getText().toLowerCase());
+        }
+
+        //Collections.sort(colors);
+        //Collections.sort(chosen_colors);
+
+        Assert.assertEquals(chosen_colors,colors);
+
+
 
         return  new Auto_complete_page(driver);
     }

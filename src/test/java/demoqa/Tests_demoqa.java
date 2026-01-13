@@ -13,8 +13,11 @@ import pages.demoqa.alerts.frame.windows.*;
 import pages.demoqa.elements.*;
 import pages.demoqa.forms.Practice_form_page;
 import pages.demoqa.widgets.Accordian_page;
+import pages.demoqa.widgets.Auto_complete_page;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.stream.Stream;
 
 
 public class Tests_demoqa extends BaseTests{
@@ -425,6 +428,22 @@ public class Tests_demoqa extends BaseTests{
         page.accordian_1_expand_get_text().
                 accordian_2_expand_get_text()
                 .accordian_3_expand_get_text();
+
+    }
+
+    @Test (groups = {"auto_complete","smoke"})
+    public void test_chose_color_in_multiple_color_names_list()  {
+        Auto_complete_page page = new Auto_complete_page(driver);
+        driver.get(Auto_complete_page.demoqa_auto_complete_page_host);
+        page.chose_color_in_multiple_color_names_list("red");
+
+    }
+
+    @Test (groups = {"auto_complete","smoke"})
+    public void test_chose_colors_in_multiple_color_names_list()  {
+        Auto_complete_page page = new Auto_complete_page(driver);
+        driver.get(Auto_complete_page.demoqa_auto_complete_page_host);
+        page.chose_colors_in_multiple_color_names_list(Stream.of("red",  "blue","green").toList());
 
     }
 
