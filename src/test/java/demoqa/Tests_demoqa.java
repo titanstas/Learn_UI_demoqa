@@ -3,6 +3,7 @@ package demoqa;
 import data.objects.Practice_form_object;
 import data.objects.Text_box_object;
 import data.objects.Web_tables_object;
+import data.provider.Data_provider_auto_complete;
 import data.provider.Data_provider_practice_form;
 import data.provider.Data_provider_text_box;
 import data.provider.Data_provider_web_tables;
@@ -17,6 +18,7 @@ import pages.demoqa.widgets.Auto_complete_page;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.Stream;
 
 
@@ -33,7 +35,6 @@ public class Tests_demoqa extends BaseTests{
 
     @Test (dataProvider = "text_box_provider", dataProviderClass = Data_provider_text_box.class,
             groups = {"text_box","sanity"})
-
     public void test_text_box_1 (String full_name, String email, String current_address, String permanent_address ) throws InterruptedException {
         Text_box_page page = new Text_box_page(driver);
         driver.get(Text_box_page.demoqa_text_box_host);
@@ -431,21 +432,40 @@ public class Tests_demoqa extends BaseTests{
 
     }
 
-    @Test (groups = {"auto_complete","smoke"})
-    public void test_chose_color_in_multiple_color_names_list()  {
+    @Test (dataProvider = "auto_complete_provider", dataProviderClass = Data_provider_auto_complete.class,groups = {"auto_complete","smoke"})
+    public void test_chose_color_in_multiple_color_names_list(String color)  {
         Auto_complete_page page = new Auto_complete_page(driver);
         driver.get(Auto_complete_page.demoqa_auto_complete_page_host);
-        page.chose_color_in_multiple_color_names_list("red");
+        page.chose_color_in_multiple_color_names_list(color);
+
+    }
+
+    @Test  (dataProvider = "auto_complete_provider_list", dataProviderClass = Data_provider_auto_complete.class,groups = {"auto_complete","smoke"})
+    public void test_chose_colors_in_multiple_color_names_list(List <String> colors)  {
+        Auto_complete_page page = new Auto_complete_page(driver);
+        driver.get(Auto_complete_page.demoqa_auto_complete_page_host);
+        page.chose_colors_in_multiple_color_names_list(colors);
+
+    }
+
+    @Test (dataProvider = "auto_complete_provider", dataProviderClass = Data_provider_auto_complete.class,
+            groups = {"auto_complete","smoke"})
+    public void test_chose_color_in_single_color_name(String color)  {
+        Auto_complete_page page = new Auto_complete_page(driver);
+        driver.get(Auto_complete_page.demoqa_auto_complete_page_host);
+        page.chose_color_in_single_color_name(color);
 
     }
 
     @Test (groups = {"auto_complete","smoke"})
-    public void test_chose_colors_in_multiple_color_names_list()  {
+    public void test_chose_color_in_single_color_name1()  {
         Auto_complete_page page = new Auto_complete_page(driver);
         driver.get(Auto_complete_page.demoqa_auto_complete_page_host);
-        page.chose_colors_in_multiple_color_names_list(Stream.of("red",  "blue","green").toList());
+        page.chose_color_in_single_color_name("red");
 
     }
+
+    //(dataProvider = "auto_complete_provider", dataProviderClass = Data_provider_auto_complete.class,groups = {"auto_complete","smoke"})
 
 }
 

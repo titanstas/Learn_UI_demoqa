@@ -33,8 +33,6 @@ public class Auto_complete_page extends BasePage {
      */
     public static String multiple_color_names_field = "//div[contains(@id, 'autoCompleteMultiple')]//input";
 
-    //div[contains(@id, 'autoCompleteMultiple')]//input
-    //div[contains(@id, 'autoCompleteMultiple')]//div[contains(@class, 'auto-complete__value-container')]
     /**
      * Вариант цвета из всплывающего списка различных цветов (нумеруется с 0)
      */
@@ -48,9 +46,28 @@ public class Auto_complete_page extends BasePage {
 
 
     /**
-     * Выбрать цвет в выпадающем списке для различных цветов
-     * Нужно указать цвет и его порядковый номер в выпадающем списке
-     * Нумерация начинается с 0
+     * Поле для ввода одного цвета
+     */
+    public static String single_color_name_field = "//div[contains(@id, 'autoCompleteSingle')]//input";
+
+
+    /**
+     * Вариант цвета из всплывающего списка одного цвета (нумеруется с 0)
+     */
+    public static String color_from_list_in_single_color_name = "//div[contains(@id, 'react-select-3-option-0')]";
+
+
+    /**
+     * Выбранный цвет в поле для ввода одного цвета
+     */
+    public static String chosen_color_in_single_color_name_field = "//div[contains(@class, 'auto-complete__single-value')]";
+
+
+    /**
+     * Метод выбора одного цвета в выпадающем списке для различных цветов
+     * Нужно указать цвет в выпадающем списке
+     * Если цветов несколько, то выбирается только введенный в аргументе
+     *
      */
     public Auto_complete_page chose_color_in_multiple_color_names_list(String color) {
 
@@ -61,7 +78,7 @@ public class Auto_complete_page extends BasePage {
         WebElement color_element = set_element_with_condition("visible", color_from_list_in_multiple_color_names);
         color_element.click();
 
-       // WebElement chosen_color_element = set_element_with_condition("visible",chosen_colors_in_multiple_color_names_field);
+
         List <WebElement> chosen_colors_elements = set_elements_with_condition("visible",chosen_colors_in_multiple_color_names_field);
         List <String> chosen_colors_elements_sorted =chosen_colors_elements
                 .stream()
@@ -77,9 +94,9 @@ public class Auto_complete_page extends BasePage {
     }
 
     /**
-     * Выбрать несколько цветов в выпадающем списке для различных цветов
+     * Метод выбора нескольких цветов в выпадающем списке для различных цветов
      * Нужно указать цвета
-     * Нумерация начинается с 0
+     * Цвета сортируются, чтобы списки с ожидаемым и фактическим результатом цветов были идентичны
      */
     public Auto_complete_page chose_colors_in_multiple_color_names_list(List<String> colors ) {
 
@@ -96,12 +113,41 @@ public class Auto_complete_page extends BasePage {
             chosen_colors.add(element.getText().toLowerCase());
         }
 
-        //Collections.sort(colors);
-        //Collections.sort(chosen_colors);
 
-        Assert.assertEquals(chosen_colors,colors);
+        List<String> sorted_colors = new ArrayList<>(colors);
 
 
+        Collections.sort(sorted_colors);
+        Collections.sort(chosen_colors);
+
+        Assert.assertEquals(chosen_colors,sorted_colors);
+
+
+
+        return  new Auto_complete_page(driver);
+    }
+
+    /**
+     * Метод выбора одного цвета в выпадающем списке для одного цвета
+     * Нужно указать цвет в выпадающем списке
+     * Если цветов несколько, то выбирается только введенный в аргументе
+     *
+     */
+    public Auto_complete_page chose_color_in_single_color_name(String color) {
+
+
+        WebElement single_color_name_field_element = set_element_with_condition("visible", single_color_name_field);
+        single_color_name_field_element.sendKeys(color);
+
+        WebElement color_element = set_element_with_condition("visible", color_from_list_in_single_color_name);
+        color_element.click();
+
+        WebElement chosen_color_element = set_element_with_condition("visible", chosen_color_in_single_color_name_field);
+        String chosen_color_text = chosen_color_element.getText().toLowerCase();
+
+
+
+        Assert.assertEquals(chosen_color_text, color);
 
         return  new Auto_complete_page(driver);
     }
