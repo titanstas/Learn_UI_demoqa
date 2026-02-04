@@ -36,12 +36,13 @@ public class Drivers {
         options.setExperimentalOption("prefs", chromePrefs);
 
         // Применить опцию местоположения exe файла хром
-        options.setBinary("D:\\ChromeDriver\\Chrome\\chrome-win64\\chrome.exe");
+        options.setBinary("C:\\Java\\Chrome\\chrome-win64\\chrome-win64\\chrome.exe");
 
         // Установить системную переменную, которая показывает место хранения хромдрайвера
         System.setProperty("webdriver.chrome.driver", System.getenv("CHROME_DRIVER"));
         //D:\ChromeDriver\chromedriver-win64\chromedriver.exe
-
+        //System.getenv("CHROME_DRIVER"))
+        //C:\\Java\\ChromeDriver\\chromedriver-win64\\chromedriver-win64\\chromedriver.exe
 
         return new ChromeDriver(options);
     }
