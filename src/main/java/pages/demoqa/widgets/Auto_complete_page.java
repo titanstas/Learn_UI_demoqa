@@ -41,7 +41,7 @@ public class Auto_complete_page extends BasePage {
     /**
      * Выбранные цвета в поле для ввода различных цветов
      */
-    public static String chosen_colors_in_multiple_color_names_field = "//div[contains(@class, 'css-12jo7m5 auto-complete__multi-value__label')]";
+    public static String chosen_colors_in_multiple_color_names_field = "//div[contains(@class, 'auto-complete__multi-value__label')]";
 
 
 

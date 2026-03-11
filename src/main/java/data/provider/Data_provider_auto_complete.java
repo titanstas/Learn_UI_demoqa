@@ -17,7 +17,7 @@ public class Data_provider_auto_complete {
     @DataProvider(name = "auto_complete_provider_list")
     public static Object[][] get_data_from_auto_complete_provider_list() {
         return new Object[][]{
-                {Stream.of("red",  "blue","green").toList()}
+                {Stream.of("red","blue","green").toList()}
         };
     }
 }

@@ -23,6 +23,7 @@
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
             <version>${seleniumhq.selenium}</version>
+            <scope>compile</scope>
         </dependency>
 
         <dependency>

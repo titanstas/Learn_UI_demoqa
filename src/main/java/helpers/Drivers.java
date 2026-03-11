@@ -17,7 +17,7 @@ public class Drivers {
      */
     public static WebDriver Setdriver () {
         //Установить директорию для загрузки файла
-        String downloadFilepath = "D:\\files";
+        String downloadFilepath = "C:\\files";
         HashMap<String, String> chromePrefs = new HashMap<String, String>();
         chromePrefs.put("download.default_directory", downloadFilepath);
 
@@ -36,13 +36,11 @@ public class Drivers {
         options.setExperimentalOption("prefs", chromePrefs);
 
         // Применить опцию местоположения exe файла хром
-        options.setBinary("C:\\Java\\Chrome\\chrome-win64\\chrome-win64\\chrome.exe");
+       options.setBinary("C:\\Java\\Chrome\\chrome-win64\\chrome-win64\\chrome.exe");
 
         // Установить системную переменную, которая показывает место хранения хромдрайвера
-        System.setProperty("webdriver.chrome.driver", System.getenv("CHROME_DRIVER"));
-        //D:\ChromeDriver\chromedriver-win64\chromedriver.exe
-        //System.getenv("CHROME_DRIVER"))
-        //C:\\Java\\ChromeDriver\\chromedriver-win64\\chromedriver-win64\\chromedriver.exe
+         System.setProperty("webdriver.chrome.driver", System.getenv("CHROME_DRIVER"));
+        //C:\\Java\\ChromeDriver\\chromedriver-win641\\chromedriver-win64\\chromedriver.exe
 
         return new ChromeDriver(options);
     }
