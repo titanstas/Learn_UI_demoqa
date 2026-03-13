@@ -41,12 +41,12 @@ public class Upload_download_page extends BasePage {
     /**
      *  Директория для хранения файла
      */
-    public static String file_directory ="D:\\files\\";
+    public static String file_directory ="C:\\files\\";
 
     /**
      *  Название файла
      */
-    public static String upload_file_name ="luminoslogo.png";
+    public static String upload_file_name ="sampleFile.jpeg";
 
     /**
      *  Кнопка "Выберите файл" для загрузки файла

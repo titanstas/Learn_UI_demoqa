@@ -52,9 +52,11 @@ public class Dynamic_properties_page  extends BasePage {
     /**
      * Метод проверки изменения цвета кнопки Color change
      */
-    public Dynamic_properties_page check_button_change_color()
-    {
+    public Dynamic_properties_page check_button_change_color()  {
         WebElement element_button = set_element_with_condition("visible", color_change_button );
+
+        element_have_condition("visible", visible_after_5_sec_button);
+
 
         String button_color=element_button.getCssValue("color");
         String button_color_hex = Color.fromString(button_color).asHex();

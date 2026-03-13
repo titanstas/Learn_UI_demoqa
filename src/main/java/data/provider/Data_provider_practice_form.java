@@ -22,7 +22,7 @@ public class Data_provider_practice_form {
                                 .date_of_birth_day("2")
                                 .subject("Maths")
                                 .hobbies("sports, reading")
-                                .file_path("D:\\files\\luminoslogo.png")
+                                .file_path("C:\\files\\sampleFile.jpeg")
                                 .current_address("Moscow, Kremlin")
                                 .state("Haryana")
                                 .city("Karnal")

@@ -302,7 +302,7 @@ public class Tests_demoqa extends BaseTests{
                 .enter_date_of_birth("February","2022","2")
                 .enter_subjects("Maths")
                 .check_hobbies("sports, reading")
-                .upload_and_check_file("D:\\files\\luminoslogo.png")
+                .upload_and_check_file("C:\\files\\sampleFile.jpeg")
                 .enter_current_address("Moscow, Kremlin")
                 .enter_state("Haryana")
                 .enter_city("Karnal")
