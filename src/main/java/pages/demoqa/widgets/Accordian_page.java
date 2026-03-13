@@ -28,34 +28,34 @@ public class Accordian_page extends BasePage {
     /**
      * Кнопка раскрытия аккордеона 1 (What is Lorem Ipsum?)
      */
-    public static String accordian_1_button = "//div[contains(text(),'What is Lorem Ipsum?')]";
+    public static String accordian_1_button = "//button[contains(text(),'What is Lorem Ipsum?')]";
 
     /**
      * Текст аккордеона 1 (What is Lorem Ipsum?)
      */
-    public static String accordian_1_text = "//div[contains(text(),'What is Lorem Ipsum?')]/following-sibling::div";
+    public static String accordian_1_text = accordian_1_button+"/parent::h2//following-sibling::div";
 
 
 
     /**
      * Кнопка раскрытия аккордеона 2 (Where does it come from?)
      */
-    public static String accordian_2_button = "//div[contains(text(),'Where does it come from?')]";
+    public static String accordian_2_button = "//button[contains(text(),'Where does it come from?')]";
 
     /**
      * Текст аккордеона 2 (Where does it come from?)
      */
-    public static String accordian_2_text = "//div[contains(text(),'Where does it come from?')]/following-sibling::div/div/p[1]";
+    public static String accordian_2_text = accordian_2_button+"/parent::h2//following-sibling::div";
 
     /**
      * Кнопка раскрытия аккордеона 3 (Where does it come from?)
      */
-    public static String accordian_3_button = "//div[contains(text(),'Why do we use it?')]";
+    public static String accordian_3_button = "//button[contains(text(),'Why do we use it?')]";
 
     /**
      * Текст аккордеона 3 (Why do we use it?)
      */
-    public static String accordian_3_text = "//div[contains(text(),'Why do we use it?')]/following-sibling::div/div/p";
+    public static String accordian_3_text = accordian_3_button+"/parent::h2//following-sibling::div";
 
 
 
