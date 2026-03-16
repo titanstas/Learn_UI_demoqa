@@ -37,12 +37,12 @@ public class Web_tables_page extends BasePage {
     /**
      * Кнопка Edit с изменяющимся xpath
      */
-    public static String edit_button = "//div[contains(@class, 'rt-tr-group')][%s]//span[contains(@title, 'Edit')]";
+    public static String edit_button = "//tbody/tr[%s]//span[contains(@title, 'Edit')]";
 
     /**
      * Кнопка Delete с изменяющимся xpath
      */
-    public static String delete_button = "//div[contains(@class, 'rt-tr-group')][%s]//span[contains(@title, 'Delete')]";
+    public static String delete_button = "//tbody/tr[%s]//span[contains(@title, 'Delete')]";
 
     /**
      * Поле First Name в регистрационной форме
@@ -87,49 +87,49 @@ public class Web_tables_page extends BasePage {
     /**
      * Кнопка поиска
      */
-    public static String search_button= "//span[contains(@class, 'input-group-text')]";
-
-
+    public static String search_button= "//button[contains(@id, 'basic-addon2')]";
+//span[contains(@class, 'input-group-text')]
+//button[contains(@id, 'basic-addon2')]
 
     /**
      * Номер строки в таблице web с изменяющимся xpath
      */
-    public static String string_in_web_table= "//div[contains(@class, 'rt-tr-group')][%s]";
+    public static String string_in_web_table= "//tbody/tr[%s]";
 
     /**
      * Номер столбца в таблице web с изменяющимся xpath
      */
-    public static String column_in_web_table= "//div[contains(@class, 'rt-td')][%s]";
+    public static String column_in_web_table= "//td[%s]";
 
     /**
      * First name в таблице web с изменяющимся xpath
      */
-    public static String first_name_in_web_table= "//div[contains(@class, 'rt-td')][1]";
+    public static String first_name_in_web_table= "//td[1]";
 
     /**
      * Last Name в таблице web с изменяющимся xpath
      */
-    public static String last_name_in_web_table= "//div[contains(@class, 'rt-td')][2]";
+    public static String last_name_in_web_table= "//td[2]";
 
     /**
      * Age в таблице web с изменяющимся xpath
      */
-    public static String age_in_web_table= "//div[contains(@class, 'rt-td')][3]";
+    public static String age_in_web_table= "//td[3]";
 
     /**
      * Email в таблице web с изменяющимся xpath
      */
-    public static String email_in_web_table= "//div[contains(@class, 'rt-td')][4]";
+    public static String email_in_web_table= "//td[4]";
 
     /**
      * Salary в таблице web с изменяющимся xpath
      */
-    public static String salary_name_in_web_table= "//div[contains(@class, 'rt-td')][5]";
+    public static String salary_name_in_web_table= "//td[5]";
 
     /**
      * Department в таблице web с изменяющимся xpath
      */
-    public static String department_in_web_table= "//div[contains(@class, 'rt-td')][6]";
+    public static String department_in_web_table= "//td[6]";
 
 
 //div[contains(@class, 'rt-tr -odd')]//div[contains(@role, 'gridcell')]
@@ -409,7 +409,7 @@ public class Web_tables_page extends BasePage {
     }
 
     /**
-     * Метод получения списка отделов в таблице web
+     * Метод получения списка персон в таблице web
      */
     public List<Web_tables_object> get_persons_in_table()
 
@@ -458,23 +458,32 @@ public class Web_tables_page extends BasePage {
 
         search(object_person.getFirst_name());
 
+       List <String> first_names= get_first_names_in_table();
+       String person_we_create_number="";
+        for (int i = 0; i < first_names.size(); i++) {
+            if (object_person.getFirst_name().equals(first_names.get(i)))
+            {
+                person_we_create_number=Integer.toString(i+1);
+            }
+        }
 
-        Assert.assertEquals(get_WebElement_in_table_cell("1","1").getText()
+
+        Assert.assertEquals(get_WebElement_in_table_cell(person_we_create_number,"1").getText()
                 ,object_person.getFirst_name());
 
-        Assert.assertEquals(get_WebElement_in_table_cell("1","2").getText()
+        Assert.assertEquals(get_WebElement_in_table_cell(person_we_create_number,"2").getText()
                 ,object_person.getLast_name());
 
-        Assert.assertEquals(get_WebElement_in_table_cell("1","3").getText()
+        Assert.assertEquals(get_WebElement_in_table_cell(person_we_create_number,"3").getText()
                 ,object_person.getAge().toString());
 
-        Assert.assertEquals(get_WebElement_in_table_cell("1","4").getText(),
+        Assert.assertEquals(get_WebElement_in_table_cell(person_we_create_number,"4").getText(),
                 object_person.getEmail());
 
-        Assert.assertEquals(get_WebElement_in_table_cell("1","5").getText(),
+        Assert.assertEquals(get_WebElement_in_table_cell(person_we_create_number,"5").getText(),
                 object_person.getSalary().toString());
 
-        Assert.assertEquals(get_WebElement_in_table_cell("1","6").getText(),
+        Assert.assertEquals(get_WebElement_in_table_cell(person_we_create_number,"6").getText(),
                 object_person.getDepartment());
 
         return new Web_tables_page(driver);

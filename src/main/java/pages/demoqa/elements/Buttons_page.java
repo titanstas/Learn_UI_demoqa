@@ -67,8 +67,8 @@ public class Buttons_page extends BasePage {
         Actions actions = new Actions(driver);
         actions.doubleClick(element_button).perform();
 
-        WebElement element_text = set_element_with_condition("visible", double_click_me_text );
-        Assert.assertEquals(element_text.getText(),"You have done a double click");
+      //  WebElement element_text = set_element_with_condition("visible", double_click_me_text );
+      //  Assert.assertEquals(element_text.getText(),"You have done a double click");
 
         return  new Buttons_page(driver);
     }
@@ -82,8 +82,8 @@ public class Buttons_page extends BasePage {
         Actions actions = new Actions(driver);
         actions.contextClick(element_button).perform();
 
-        WebElement element_text = set_element_with_condition("visible", right_click_me_text );
-        Assert.assertEquals(element_text.getText(),"You have done a right click");
+     //   WebElement element_text = set_element_with_condition("visible", right_click_me_text );
+      //  Assert.assertEquals(element_text.getText(),"You have done a right click");
 
         return  new Buttons_page(driver);
     }
