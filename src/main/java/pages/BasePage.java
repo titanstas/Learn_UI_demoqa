@@ -96,14 +96,15 @@ public class BasePage {
             }
 
             if (condition.equals("clickable")){
-                new WebDriverWait(driver, Duration.ofSeconds(duration_of_waiting_seconds)).until(ExpectedConditions.elementToBeClickable(By.xpath(String.format(elementXpath,  xpathParameter))));
+                new WebDriverWait(driver, Duration.ofSeconds(duration_of_waiting_seconds)).until(ExpectedConditions.elementToBeClickable(By.xpath(String.format(elementXpath, xpathParameter))));
             }
 
 
 
 
         } catch (Exception e) {
-            System.out.println("Элемент с xpath =\"" +elementXpath+  "\" не удовлетворяет условию "+condition);
+
+            System.out.println("Элемент с xpath =\"" +String.format(elementXpath, xpathParameter)+  "\" не удовлетворяет условию "+condition);
         }
 
 
@@ -161,7 +162,7 @@ public class BasePage {
 
 
         } catch (Exception e) {
-            System.out.println("Элемент с xpath =\"" +elementXpath+  "\" не удовлетворяет условию "+condition);
+            System.out.println("Элемент с xpath =\"" +String.format(elementXpath, xpathParameter)+  "\" не удовлетворяет условию "+condition);
         }
 
 
@@ -235,7 +236,7 @@ public class BasePage {
 
 
         } catch (Exception e) {
-            System.out.println("Элемент с xpath = \"" +elementXpath+  "\" не удовлетворяет условию "+ condition);
+            System.out.println("Элемент с xpath = \"" +String.format(elementXpath, xpathParameter)+  "\" не удовлетворяет условию "+ condition);
             return false;
         }
         return true;

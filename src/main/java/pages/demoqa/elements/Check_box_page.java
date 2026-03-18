@@ -29,18 +29,19 @@ public class Check_box_page extends BasePage {
     /**
      * Кнопка раскрыть/закрыть папку
      */
-    public static String expand_collapse_button = "/button[contains(@class, 'rct-collapse rct-collapse-btn')]";
+    public static String expand_collapse_button = "/span[contains(@class, 'rc-tree-switcher rc-tree-switcher')]";
 
     /**
      * Чекбокс выбора папки
      */
-    public static String folder_checkbox = "//span[contains(@class, 'rct-checkbox')]";
+    public static String folder_checkbox = "//span[contains(@class, 'rc-tree-checkbox')]";
 
     /**
      * Элемент родитель для перехода от папки к другому элементу
      */
-    public static String transition_from_folder_to_other_element = "/parent::label/parent::span";
-
+    public static String transition_from_folder_to_other_element = "/parent::span/parent::div";
+//parent::span/parent::div
+    ///parent::label/parent::span
     /**
      * Элемент папки по названию с изменяющимся xpath
      */
@@ -65,12 +66,14 @@ public class Check_box_page extends BasePage {
         return  new Check_box_page(driver);
     }
 
+    //folder_by_name+ transition_from_folder_to_other_element +expand_collapse_button
+
     /**
      * Метод выбора папки по имени
      */
     public Check_box_page folder_check (String name)
     {
-        WebElement folder_element_button = set_element_with_condition("visible",folder_by_name+ transition_from_folder_to_other_element +folder_checkbox,name );
+        WebElement folder_element_button = set_element_with_condition("visible",folder_by_name+transition_from_folder_to_other_element+folder_checkbox,name );
         folder_element_button.click();
 
         WebElement element_message_checked_folders = set_element_with_condition("visible",message_checked_folders,name );
@@ -83,3 +86,5 @@ public class Check_box_page extends BasePage {
         return  new Check_box_page(driver);
     }
 }
+//span[contains(text(),'%s')]
+//folder_by_name
