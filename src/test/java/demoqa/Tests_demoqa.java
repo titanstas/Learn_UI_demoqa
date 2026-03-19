@@ -15,6 +15,7 @@ import pages.demoqa.elements.*;
 import pages.demoqa.forms.Practice_form_page;
 import pages.demoqa.widgets.Accordian_page;
 import pages.demoqa.widgets.Auto_complete_page;
+import pages.demoqa.widgets.Date_picker_page;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -464,6 +465,18 @@ public class Tests_demoqa extends BaseTests{
         page.chose_color_in_single_color_name("red");
 
     }
+
+    @Test (groups = {"date_picker","smoke"})
+    public void test_enter_date()  {
+        Date_picker_page page = new Date_picker_page(driver);
+        driver.get(Date_picker_page.demoqa_date_picker_page_host);
+        page.enter_date("February","2022","2");
+
+    }
+
+
+
+
 
     //(dataProvider = "auto_complete_provider", dataProviderClass = Data_provider_auto_complete.class,groups = {"auto_complete","smoke"})
 
