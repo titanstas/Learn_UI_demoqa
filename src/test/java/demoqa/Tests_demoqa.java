@@ -474,6 +474,14 @@ public class Tests_demoqa extends BaseTests{
 
     }
 
+    @Test (groups = {"date_picker","smoke"})
+    public void test_enter_date_time()  {
+        Date_picker_page page = new Date_picker_page(driver);
+        driver.get(Date_picker_page.demoqa_date_picker_page_host);
+        page.enter_date_time("February","2022","1", "15", "15");
+
+    }
+
 
 
 
