@@ -16,6 +16,7 @@ import pages.demoqa.forms.Practice_form_page;
 import pages.demoqa.widgets.Accordian_page;
 import pages.demoqa.widgets.Auto_complete_page;
 import pages.demoqa.widgets.Date_picker_page;
+import pages.demoqa.widgets.Slider_page;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -479,7 +480,13 @@ public class Tests_demoqa extends BaseTests{
         Date_picker_page page = new Date_picker_page(driver);
         driver.get(Date_picker_page.demoqa_date_picker_page_host);
         page.enter_date_time("February","2022","1", "15", "15");
+    }
 
+    @Test (groups = {"Slider","smoke"})
+    public void test_chose_slider_value()  {
+        Slider_page page = new Slider_page(driver);
+        driver.get(Slider_page.demoqa_slider_page_host);
+        page.chose_slider_value("22");
     }
 
 
