@@ -3,9 +3,11 @@ package pages.demoqa.widgets;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import pages.BasePage;
 
+import java.time.Duration;
 import java.util.List;
 
 public class Slider_page extends BasePage {
@@ -31,6 +33,11 @@ public class Slider_page extends BasePage {
      * Слайдер
      */
     public static String slider_field = "//input[@id= 'slider']";
+
+    /**
+     * Кружок слайдера
+     */
+    public static String slider_circle_field = "//div[@class= 'range-slider__tooltip range-slider__tooltip--auto range-slider__tooltip--bottom']";
 
 
 
@@ -59,5 +66,33 @@ public class Slider_page extends BasePage {
         return  new Slider_page(driver);
 
 
+    }
+
+    /**
+     * Метод выбора значения слайдера
+     * Можно выбрать значение от 0 до 100 на слайдере, что соответствует значению от - 50 до 50 аргумента move_offset_value
+     * Точное значение пикселей от -382 до 384
+     */
+    public Slider_page chose_slider_value_2(String move_offset_value)  {
+
+
+        WebElement slider_field_element = set_element_with_condition("visible", slider_field);
+
+        Actions move = new Actions(driver);
+
+       int move_offset_value_int= (int) (Double.parseDouble(move_offset_value) *7.68);
+
+        move
+                .moveToElement(slider_field_element)
+                .clickAndHold(slider_field_element)
+                .moveByOffset(move_offset_value_int, 0)
+                .release()
+                .build().perform();
+
+
+        Assert.assertEquals(slider_field_element.getAttribute("value"), String.valueOf(Integer.parseInt(move_offset_value)+50));
+
+
+        return  new Slider_page(driver);
     }
 }

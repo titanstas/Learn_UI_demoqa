@@ -13,10 +13,7 @@ import pages.demoqa.Demoqa_main_page;
 import pages.demoqa.alerts.frame.windows.*;
 import pages.demoqa.elements.*;
 import pages.demoqa.forms.Practice_form_page;
-import pages.demoqa.widgets.Accordian_page;
-import pages.demoqa.widgets.Auto_complete_page;
-import pages.demoqa.widgets.Date_picker_page;
-import pages.demoqa.widgets.Slider_page;
+import pages.demoqa.widgets.*;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -488,6 +485,21 @@ public class Tests_demoqa extends BaseTests{
         driver.get(Slider_page.demoqa_slider_page_host);
         page.chose_slider_value("22");
     }
+
+    @Test (groups = {"Slider","smoke"})
+    public void test_chose_slider_value_by_drag_ann_drop() {
+        Slider_page page = new Slider_page(driver);
+        driver.get(Slider_page.demoqa_slider_page_host);
+        page.chose_slider_value_2("-5");
+    }
+
+    @Test (groups = {"progress_bar","smoke"})
+    public void test_progress_100() {
+        Progress_bar_page page = new Progress_bar_page(driver);
+        driver.get(Progress_bar_page.demoqa_slider_page_host);
+        page.progress_100();
+    }
+
 
 
 
