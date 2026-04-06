@@ -43,7 +43,7 @@ public class BasePage {
     /**
      * Заголовок страницы
      */
-    public static int duration_of_waiting_seconds = 10;
+    public static int duration_of_waiting_seconds = 8;
 
     /**
      * Метод для возвращения элемента и проверки того, что элемент видно
@@ -243,6 +243,36 @@ public class BasePage {
     }
 
 
+
+
+    /**
+     * Метод для получения значения у аттрибута элемента
+     */
+    public String element_attribute_value (String attribute, String value, String elementXpath) {
+       String actual_attribute_value;
+
+        try {
+
+           new WebDriverWait(driver, Duration.ofSeconds(duration_of_waiting_seconds))
+                    .until(ExpectedConditions
+                            .attributeToBe(By.xpath(elementXpath),attribute, value)
+                    );
+
+        } catch (Exception e) {
+            actual_attribute_value =driver.findElement(By.xpath(elementXpath)).getAttribute(attribute);
+
+            System.out.printf("Значение аттрибута %s элемента с xpath = \"%s\" не равно %s", attribute, elementXpath, value);
+            System.out.println();
+            System.out.printf("Значение аттрибута %s элемента с xpath = \"%s\" равно %s", attribute, elementXpath, actual_attribute_value);
+
+        }
+
+        finally {
+            actual_attribute_value =driver.findElement(By.xpath(elementXpath)).getAttribute(attribute);
+        }
+
+        return actual_attribute_value;
+    }
 
 
     /**

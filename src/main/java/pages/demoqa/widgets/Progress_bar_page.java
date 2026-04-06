@@ -55,7 +55,7 @@ public class Progress_bar_page extends BasePage {
 
     /**
      * Метод 100% заполнения индикатор выполнения
-     * Доводит значение заполнение индикатора до 100%
+     * Доводит значение заполнение индикатора до 100% и проверяет что оно 100%
      *
      */
     public Progress_bar_page progress_100() {
@@ -66,14 +66,12 @@ public class Progress_bar_page extends BasePage {
         WebElement progress_bar_field_element = set_element_with_condition("visible", progress_bar_field);
 
 
-        progress_bar_field_element.getAttribute("aria-valuenow");
 
-        new WebDriverWait(driver, Duration.ofSeconds(15))
-                .until(ExpectedConditions
-                        .attributeToBe(By.xpath(progress_bar_field),"aria-valuenow", "100")
-                );
+        String actual_value = element_attribute_value("aria-valuenow", "100", progress_bar_field);
 
-        Assert.assertEquals(progress_bar_field_element.getAttribute("aria-valuenow"), "100");
+
+
+        Assert.assertEquals(actual_value, "100");
 
         return  new Progress_bar_page(driver);
 
