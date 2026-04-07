@@ -63,13 +63,11 @@ public class Progress_bar_page extends BasePage {
         WebElement start_stop_button_element = set_element_with_condition("clickable", start_stop_button);
         start_stop_button_element.click();
 
-        WebElement progress_bar_field_element = set_element_with_condition("visible", progress_bar_field);
+        element_have_condition("visible", progress_bar_field);
 
 
 
         String actual_value = element_attribute_value("aria-valuenow", "100", progress_bar_field);
-
-
 
         Assert.assertEquals(actual_value, "100");
 
@@ -77,6 +75,40 @@ public class Progress_bar_page extends BasePage {
 
     }
 
+    /**
+     * Метод нажатия кнопки reset после 100% заполнения индикатор выполнения
+     *
+     */
+    public Progress_bar_page reset_progress() {
+
+        WebElement reset_button_element = set_element_with_condition("clickable", reset_button);
+        reset_button_element.click();
+
+
+        return  new Progress_bar_page(driver);
+    }
+
+
+    /**
+     * Метод заполнения индикатор выполнения указанного значения
+     * Доводит, значение заполнение индикатора до указанного значения и проверяет что оно указанное
+     *
+     */
+    public Progress_bar_page progress_x(String value) {
+
+        WebElement start_stop_button_element = set_element_with_condition("clickable", start_stop_button);
+        start_stop_button_element.click();
+
+
+
+        String actual_value = element_attribute_value("aria-valuenow", value, progress_bar_field);
+        start_stop_button_element.click();
+
+        Assert.assertEquals(actual_value, value);
+
+        return  new Progress_bar_page(driver);
+
+    }
 
 
 }

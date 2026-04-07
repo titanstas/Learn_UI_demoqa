@@ -500,6 +500,13 @@ public class Tests_demoqa extends BaseTests{
         page.progress_100();
     }
 
+    @Test (groups = {"progress_bar","sanity"})
+    public void test_progress_x() {
+        Progress_bar_page page = new Progress_bar_page(driver);
+        driver.get(Progress_bar_page.demoqa_slider_page_host);
+        page.progress_x("56");
+    }
+
 
 
 

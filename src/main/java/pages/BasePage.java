@@ -9,6 +9,7 @@ import org.openqa.selenium.logging.LogEntry;
 import org.openqa.selenium.logging.LogType;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
@@ -41,9 +42,14 @@ public class BasePage {
 
 
     /**
-     * Заголовок страницы
+     * Время ожидания в секундах
      */
-    public static int duration_of_waiting_seconds = 8;
+    public static int duration_of_waiting_seconds = 10;
+
+    /**
+     * Интервал проверки в миллисекундах
+     */
+    public static int polling_every_milliseconds = 10;
 
     /**
      * Метод для возвращения элемента и проверки того, что элемент видно
@@ -253,10 +259,10 @@ public class BasePage {
 
         try {
 
-           new WebDriverWait(driver, Duration.ofSeconds(duration_of_waiting_seconds))
-                    .until(ExpectedConditions
-                            .attributeToBe(By.xpath(elementXpath),attribute, value)
-                    );
+           new FluentWait<>(driver)
+                   .withTimeout(Duration.ofSeconds(duration_of_waiting_seconds))
+                   .pollingEvery(Duration.ofMillis(polling_every_milliseconds))
+                   .until(ExpectedConditions.attributeToBe(By.xpath(elementXpath),attribute, value));
 
         } catch (Exception e) {
             actual_attribute_value =driver.findElement(By.xpath(elementXpath)).getAttribute(attribute);
