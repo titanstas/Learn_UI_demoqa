@@ -507,6 +507,23 @@ public class Tests_demoqa extends BaseTests{
         page.progress_x("56");
     }
 
+    @Test (groups = {"tabs","sanity"})
+    public void test_tabs_get_texts_1() {
+        Tabs_page page = new Tabs_page(driver);
+        driver.get(Tabs_page.demoqa_tabs_page_host);
+        page
+                .what_tab_get_text()
+                .origin_tab_get_text()
+                .use_tab_get_text();
+    }
+
+    @Test (groups = {"tabs","smoke"})
+    public void test_tabs_get_texts_2() {
+        Tabs_page page = new Tabs_page(driver);
+        driver.get(Tabs_page.demoqa_tabs_page_host);
+        page.tabs_get_texts();
+    }
+
 
 
 
