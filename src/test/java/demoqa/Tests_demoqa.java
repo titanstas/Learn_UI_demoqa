@@ -531,6 +531,13 @@ public class Tests_demoqa extends BaseTests{
         page.get_tool_tip_from_button();
     }
 
+    @Test (groups = {"tool_tips","smoke"})
+    public void test_get_tool_tip_from_field() {
+        Tool_tips_page page = new Tool_tips_page(driver);
+        driver.get(Tool_tips_page.demoqa_tool_tips_page_host);
+        page.get_tool_tip_from_field();
+    }
+
 
 
 

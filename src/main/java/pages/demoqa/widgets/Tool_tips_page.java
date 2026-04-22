@@ -28,15 +28,20 @@ public class Tool_tips_page extends BasePage {
      */
 
     /**
-     * Кнопка с подсказкой подсказки
+     * Кнопка с подсказкой
      */
     public static String tool_tip_button = "//button[@id= 'toolTipButton']";
 
     /**
-     * Текст подсказки в кнопке
+     * Текст подсказки в кнопке и поле
      */
-    public static String tool_tip_button_text = "//div[@class= 'tooltip-inner']";
+    public static String tool_tip_button_field_text = "//div[@class= 'tooltip-inner']";
 
+
+    /**
+     * Поле с подсказкой
+     */
+    public static String tool_tip_field = "//input[@id= 'toolTipTextField']";
 
 
 
@@ -54,13 +59,36 @@ public class Tool_tips_page extends BasePage {
                 .perform();
 
 
-        WebElement tool_tip_button_text_element = set_element_with_condition("visible", tool_tip_button_text);
+        WebElement tool_tip_button_text_element = set_element_with_condition("visible", tool_tip_button_field_text);
 
 
 
         Assert.assertEquals(tool_tip_button_text_element.getText(), "You hovered over the Button");
 
-        //System.out.println(tool_tip_button_text_element.getText());
+
+        return  new Tool_tips_page(driver);
+    }
+
+    /**
+     * Метод проверки наличия текста из подсказки в поле
+     */
+    public Tool_tips_page get_tool_tip_from_field() {
+
+
+        WebElement tool_tip_field_element = set_element_with_condition("visible", tool_tip_field);
+        new Actions(driver)
+                .moveToElement(tool_tip_field_element)
+                .clickAndHold(tool_tip_field_element)
+                .build()
+                .perform();
+
+
+        WebElement tool_tip_field_element_text_element = set_element_with_condition("visible", tool_tip_button_field_text);
+
+
+
+        Assert.assertEquals(tool_tip_field_element_text_element.getText(), "You hovered over the text field");
+
 
         return  new Tool_tips_page(driver);
     }
