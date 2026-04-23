@@ -538,6 +538,13 @@ public class Tests_demoqa extends BaseTests{
         page.get_tool_tip_from_field();
     }
 
+    @Test (groups = {"menu","smoke"})
+    public void test_press_menu_button_sub_sub_item_1() throws InterruptedException {
+        Menu_page page = new Menu_page(driver);
+        driver.get(Menu_page.demoqa_menu_page_host);
+        page.press_menu_button_sub_sub_item_1();
+    }
+
 
 
 

@@ -27,7 +27,7 @@ public class BaseTests {
 
         driver = Drivers.Setdriver();
         driver.manage().window().maximize();
-       driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(100));
+        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(100));
         driver.manage().timeouts().scriptTimeout(Duration.ofSeconds(100));
     }
 

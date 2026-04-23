@@ -3,8 +3,11 @@ package pages.demoqa.widgets;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import pages.BasePage;
+
+import java.time.Duration;
 
 public class Menu_page extends BasePage {
     /**
@@ -19,7 +22,7 @@ public class Menu_page extends BasePage {
     /**
      * Адрес страницы
      */
-    public static String demoqa_tool_tips_page_host = "https://demoqa.com/menu#";
+    public static String demoqa_menu_page_host = "https://demoqa.com/menu#";
 
      /*
       Xpath
@@ -56,16 +59,42 @@ public class Menu_page extends BasePage {
      */
     public static String sub_list_button =  main_item_2_button+"/parent::li//a[text()= 'SUB SUB LIST »']";
 
+    /**
+     * Кнопка меню Sub Sub Item 1  в меню SUB SUB LIST »
+     */
+    public static String sub_sub_item_1_button =  sub_list_button+"/parent::li//a[text()= 'Sub Sub Item 1']";
 
     /**
-     * Метод проверки наличия текста из подсказки в кнопке
+     * Кнопка меню Sub Sub Item 2  в меню SUB SUB LIST »
      */
-    public Menu_page get_tool_tip_from_button() {
+    public static String sub_sub_item_2_button =  sub_list_button+"/parent::li//a[text()= 'Sub Sub Item 2']";
 
 
-        WebElement tool_tip_button_element = set_element_with_condition("visible", main_item_1_button);
+    /**
+     * Метод нажатия на кнопку в меню Sub Sub Item 1
+     */
+    public Menu_page press_menu_button_sub_sub_item_1() throws InterruptedException {
+
+        Actions actions = new Actions(driver);
 
 
+        WebElement main_item_2_button_element = set_element_with_condition("clickable", main_item_2_button);
+        main_item_2_button_element.click();
+
+        actions.pause(Duration.ofSeconds(1)).perform();
+
+
+        WebElement sub_list_button_element = set_element_with_condition("clickable", sub_list_button);
+        sub_list_button_element.click();
+
+        actions.pause(Duration.ofSeconds(1)).perform();
+
+        WebElement sub_sub_item_1_button_element = set_element_with_condition("clickable", sub_sub_item_1_button);
+        sub_sub_item_1_button_element.click();
+
+        Assert.assertEquals(sub_sub_item_1_button_element.getText(), "Sub Sub Item 1");
+
+        actions.pause(Duration.ofSeconds(1)).perform();
 
         return  new Menu_page(driver);
     }
