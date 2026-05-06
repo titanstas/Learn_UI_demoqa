@@ -16,9 +16,7 @@ import pages.demoqa.forms.Practice_form_page;
 import pages.demoqa.widgets.*;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Stream;
 
 
 public class Tests_demoqa extends BaseTests{
@@ -543,6 +541,27 @@ public class Tests_demoqa extends BaseTests{
         Menu_page page = new Menu_page(driver);
         driver.get(Menu_page.demoqa_menu_page_host);
         page.press_menu_button_sub_sub_item_1();
+    }
+
+    @Test (groups = {"select_menu","smoke"})
+    public void test_chose_element_from_list_1() throws InterruptedException {
+        Select_menu_page page = new Select_menu_page(driver);
+        driver.get(Select_menu_page.demoqa_select_menu_page_host);
+        page.chose_element_from_list_select_value("Another root option");
+    }
+
+    @Test (groups = {"select_menu","smoke"})
+    public void test_chose_element_from_list_2() throws InterruptedException {
+        Select_menu_page page = new Select_menu_page(driver);
+        driver.get(Select_menu_page.demoqa_select_menu_page_host);
+        page.chose_element_from_list_select_one("Mr.");
+    }
+
+    @Test (groups = {"select_menu","smoke"})
+    public void test_chose_element_from_list_3() throws InterruptedException {
+        Select_menu_page page = new Select_menu_page(driver);
+        driver.get(Select_menu_page.demoqa_select_menu_page_host);
+        page.chose_element_from_list_old_style_select_menu("Green");
     }
 
 

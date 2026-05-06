@@ -1,12 +1,10 @@
 package pages.demoqa.widgets;
 
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
-import org.testng.Assert;
 import pages.BasePage;
-
-import java.time.Duration;
 
 public class Select_menu_page extends BasePage {
     /**
@@ -30,17 +28,34 @@ public class Select_menu_page extends BasePage {
     /**
      *  Всплывающий список Select Value
      */
-    public static String select_Value_list = "//div[@id= 'react-select-2-placeholder']";
+    public static String select_value_list = "//input[@id= 'react-select-2-input']";
+
+    /**
+     *  Элемент всплывающего списка Select Value c изменяющимся xpath с выбором элемента по его тексту
+     */
+    public static String select_value_list_option = "//div[@role= 'listbox']//*[text()='%s']";
 
     /**
      *  Всплывающий список Select One
      */
-    public static String select_one_list = "//div[@id= 'react-select-3-placeholder']";
+    public static String select_one_list = "//input[@id= 'react-select-3-input']";
+
+
+    /**
+     *  Элемент всплывающего списка Select One c изменяющимся xpath с выбором элемента по его тексту
+     */
+    public static String select_one_list_option = "//div[@id= 'react-select-3-listbox']//*[text()='%s']";
+
 
     /**
      *  Всплывающий список Old Style Select Menu
      */
     public static String old_style_select_menu_list = "//select[@id= 'oldSelectMenu']";
+
+    /**
+     *  Элемент всплывающего списка Old Style Select Menu c изменяющимся xpath с выбором элемента по его тексту
+     */
+    public static String old_style_select_menu_list_option = "//select[@id= 'oldSelectMenu']//*[text()='%s']";
 
     /**
      *  Всплывающий список Multiselect drop down
@@ -56,13 +71,57 @@ public class Select_menu_page extends BasePage {
 
 
     /**
-     * Метод выбора варианта из всплывающего списка
+     * Метод выбора варианта из всплывающего списка Select Value
      */
-    public Select_menu_page chose_element_from_list()  {
+    public Select_menu_page chose_element_from_list_select_value(String list_option_text) throws InterruptedException {
 
-        WebElement select_Value_list_element = set_element_with_condition("clickable", select_Value_list);
+        WebElement select_Value_list_element = set_element_with_condition("clickable", select_value_list);
         select_Value_list_element.click();
 
+        Thread.sleep(1000);
+
+        WebElement select_Value_list_option_element = set_element_with_condition("clickable", select_value_list_option, list_option_text );
+        select_Value_list_option_element.click();
+
+        Thread.sleep(1000);
+
+        return new Select_menu_page(driver);
+    }
+
+    /**
+     * Метод выбора варианта из всплывающего списка Select One
+     */
+    public Select_menu_page chose_element_from_list_select_one(String list_option_text) throws InterruptedException {
+
+        WebElement select_one_list_element = set_element_with_condition("clickable", select_one_list);
+        select_one_list_element.click();
+
+        Thread.sleep(1000);
+
+        WebElement select_one_list_option_element = set_element_with_condition("clickable", select_one_list_option, list_option_text );
+        select_one_list_option_element.click();
+
+        Thread.sleep(1000);
+
+        return new Select_menu_page(driver);
+    }
+
+    /**
+     * Метод выбора варианта из всплывающего списка Select One
+     */
+    public Select_menu_page chose_element_from_list_old_style_select_menu(String list_option_text) throws InterruptedException {
+
+        WebElement old_style_select_menu_list_element = set_element_with_condition("clickable", old_style_select_menu_list);
+        old_style_select_menu_list_element.click();
+
+        Thread.sleep(1000);
+
+        WebElement old_style_select_menu_list_option_element = set_element_with_condition("clickable", old_style_select_menu_list_option, list_option_text );
+        old_style_select_menu_list_option_element.click();
+
+        new Actions(driver).sendKeys(Keys.ENTER).build().perform();
+
+        Thread.sleep(1000);
 
         return new Select_menu_page(driver);
     }
