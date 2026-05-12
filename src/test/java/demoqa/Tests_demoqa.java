@@ -13,6 +13,7 @@ import pages.demoqa.Demoqa_main_page;
 import pages.demoqa.alerts.frame.windows.*;
 import pages.demoqa.elements.*;
 import pages.demoqa.forms.Practice_form_page;
+import pages.demoqa.intercations.Sortable_page;
 import pages.demoqa.widgets.*;
 
 import java.io.IOException;
@@ -577,6 +578,13 @@ public class Tests_demoqa extends BaseTests{
         Select_menu_page page = new Select_menu_page(driver);
         driver.get(Select_menu_page.demoqa_select_menu_page_host);
         page.chose_element_from_list_standard_multi_select(List.of("Volvo", "Opel"));
+    }
+
+    @Test (groups = {"sortable","smoke"})
+    public void test_change_number_position_list() throws InterruptedException {
+        Sortable_page page = new Sortable_page(driver);
+        driver.get(Sortable_page.demoqa_sortable_page_host);
+        page.change_number_position_list("One", "Six");
     }
 
 
