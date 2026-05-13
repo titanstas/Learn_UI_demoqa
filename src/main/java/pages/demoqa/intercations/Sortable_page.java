@@ -73,4 +73,29 @@ public class Sortable_page extends BasePage {
 
         return  new Sortable_page(driver);
     }
+
+    /**
+     * Метод переноса цифры из сетки из одной позиции на другую
+     */
+    public Sortable_page change_number_position_grid (String number_source, String number_target)  {
+        WebElement list_button_element = set_element_with_condition("clickable", grid_button );
+        list_button_element.click();
+
+        WebElement number_from_grid_source_element = set_element_with_condition("clickable", number_from_grid, number_source );
+
+        WebElement number_from_grid_target_element = set_element_with_condition("clickable", number_from_grid, number_target );
+
+
+
+        Actions actions = new Actions(driver);
+        actions
+                .clickAndHold(number_from_grid_source_element)
+                .moveToElement(number_from_grid_target_element)
+                .release(number_from_grid_target_element)
+                .build()
+                .perform();
+
+
+        return  new Sortable_page(driver);
+    }
 }

@@ -13,11 +13,11 @@ import pages.demoqa.Demoqa_main_page;
 import pages.demoqa.alerts.frame.windows.*;
 import pages.demoqa.elements.*;
 import pages.demoqa.forms.Practice_form_page;
+import pages.demoqa.intercations.Selectable_page;
 import pages.demoqa.intercations.Sortable_page;
 import pages.demoqa.widgets.*;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -585,6 +585,24 @@ public class Tests_demoqa extends BaseTests{
         Sortable_page page = new Sortable_page(driver);
         driver.get(Sortable_page.demoqa_sortable_page_host);
         page.change_number_position_list("One", "Six");
+    }
+
+    @Test (groups = {"sortable","smoke"})
+    public void test_change_number_position_grid() throws InterruptedException {
+        Sortable_page page = new Sortable_page(driver);
+        driver.get(Sortable_page.demoqa_sortable_page_host);
+        page.change_number_position_grid("One", "Seven");
+    }
+
+    @Test (groups = {"sortable","smoke"})
+    public void test_choose_message_from_list() throws InterruptedException {
+        Selectable_page page = new Selectable_page(driver);
+        driver.get(Selectable_page.demoqa_selectable_page_host);
+        page
+                .choose_message_from_list("Cras justo odio")
+                .choose_message_from_list("Morbi leo risus")
+                .choose_message_from_list("Porta ac consectetur ac");
+
     }
 
 
