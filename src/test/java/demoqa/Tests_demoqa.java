@@ -13,6 +13,7 @@ import pages.demoqa.Demoqa_main_page;
 import pages.demoqa.alerts.frame.windows.*;
 import pages.demoqa.elements.*;
 import pages.demoqa.forms.Practice_form_page;
+import pages.demoqa.intercations.Resizable_page;
 import pages.demoqa.intercations.Selectable_page;
 import pages.demoqa.intercations.Sortable_page;
 import pages.demoqa.widgets.*;
@@ -594,15 +595,25 @@ public class Tests_demoqa extends BaseTests{
         page.change_number_position_grid("One", "Seven");
     }
 
-    @Test (groups = {"sortable","smoke"})
+    @Test (groups = {"selectable","smoke"})
     public void test_choose_message_from_list() throws InterruptedException {
         Selectable_page page = new Selectable_page(driver);
         driver.get(Selectable_page.demoqa_selectable_page_host);
-        page
-                .choose_message_from_list("Cras justo odio")
-                .choose_message_from_list("Morbi leo risus")
-                .choose_message_from_list("Porta ac consectetur ac");
+        page.choose_messages_from_list(List.of("Cras justo odio", "Morbi leo risus","Porta ac consectetur ac"));
+    }
 
+    @Test (groups = {"selectable","smoke"})
+    public void test_choose_numbers_from_grid() throws InterruptedException {
+        Selectable_page page = new Selectable_page(driver);
+        driver.get(Selectable_page.demoqa_selectable_page_host);
+        page.choose_numbers_from_grid(List.of("One", "Two", "Six", "Seven"));
+    }
+
+    @Test (groups = {"resizable","smoke"})
+    public void test_change_restrictions_box_size() throws InterruptedException {
+        Resizable_page page = new Resizable_page(driver);
+        driver.get(Resizable_page.demoqa_resizable_page_host);
+        page.change_restrictions_box_size(50,50);
     }
 
 
