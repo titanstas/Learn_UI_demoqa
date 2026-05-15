@@ -13,6 +13,7 @@ import pages.demoqa.Demoqa_main_page;
 import pages.demoqa.alerts.frame.windows.*;
 import pages.demoqa.elements.*;
 import pages.demoqa.forms.Practice_form_page;
+import pages.demoqa.intercations.Droppable_page;
 import pages.demoqa.intercations.Resizable_page;
 import pages.demoqa.intercations.Selectable_page;
 import pages.demoqa.intercations.Sortable_page;
@@ -614,6 +615,20 @@ public class Tests_demoqa extends BaseTests{
         Resizable_page page = new Resizable_page(driver);
         driver.get(Resizable_page.demoqa_resizable_page_host);
         page.change_restrictions_box_size(50,50);
+    }
+
+    @Test (groups = {"resizable","smoke"})
+    public void test_change_no_restrictions_box_size() throws InterruptedException {
+        Resizable_page page = new Resizable_page(driver);
+        driver.get(Resizable_page.demoqa_resizable_page_host);
+        page.change_no_restrictions_box_size(50,50);
+    }
+
+    @Test (groups = {"droppable","smoke"})
+    public void test_drag_n_drop_simple() throws InterruptedException {
+        Droppable_page page = new Droppable_page(driver);
+        driver.get(Droppable_page.demoqa_droppable_page_host);
+        page.drag_n_drop_simple();
     }
 
 
