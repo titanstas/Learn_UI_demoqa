@@ -631,6 +631,22 @@ public class Tests_demoqa extends BaseTests{
         page.drag_n_drop_simple();
     }
 
+    @Test (groups = {"droppable","smoke"})
+    public void test_drag_n_drop_accept() throws InterruptedException {
+        Droppable_page page = new Droppable_page(driver);
+        driver.get(Droppable_page.demoqa_droppable_page_host);
+        page.drag_n_drop_accept();
+    }
+
+    @Test (groups = {"droppable","smoke"})
+    public void test_drag_n_drop_not_accept() throws InterruptedException {
+        Droppable_page page = new Droppable_page(driver);
+        driver.get(Droppable_page.demoqa_droppable_page_host);
+        page.drag_n_drop_not_accept();
+    }
+
+
+
 
 
 
